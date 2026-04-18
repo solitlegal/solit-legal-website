@@ -4,6 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>SOLIT.LEGAL – Legal Experts in Technology</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Crect width='100' height='100' rx='8' fill='%231a3a2a'/%3E%3Ctext font-family='Georgia,serif' font-size='52' font-weight='600' fill='%23f5f3ef' text-anchor='middle' dominant-baseline='central' x='39' y='50'%3ES%3C/text%3E%3Ctext font-family='Georgia,serif' font-size='52' font-weight='600' fill='%23b8965a' text-anchor='middle' dominant-baseline='central' x='61' y='50'%3E.%3C/text%3E%3C/svg%3E" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
@@ -38,8 +39,12 @@
       transition: padding 0.3s ease, box-shadow 0.3s;
     }
     nav.scrolled { padding: 1rem 4rem; box-shadow: 0 1px 20px rgba(0,0,0,0.06); }
-    .logo { font-family: var(--serif); font-size: 1.25rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent); text-decoration: none; cursor: pointer; }
-    .logo span { color: var(--gold); }
+    .logo { display: inline-flex; align-items: center; gap: 0.65rem; text-decoration: none; cursor: pointer; }
+    .logo-monogram { width: 2rem; height: 2rem; flex-shrink: 0; transition: transform 0.3s ease; }
+    .logo:hover .logo-monogram { transform: scale(1.05); }
+    .logo-text { font-family: var(--serif); font-size: 1.25rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent); }
+    .logo-text span { color: var(--gold); }
+    nav.scrolled .logo-monogram { width: 1.75rem; height: 1.75rem; }
     nav ul { list-style: none; display: flex; gap: 2.5rem; align-items: center; }
     nav a { font-size: 0.75rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; text-decoration: none; color: var(--muted); transition: color 0.2s; cursor: pointer; }
     nav a:hover, nav a.active-nav { color: var(--accent); }
@@ -99,8 +104,10 @@
     /* ── FOOTER ── */
     footer { background: var(--ink); border-top: 1px solid rgba(245,243,239,0.06); padding: 4rem 4rem 2rem; }
     .footer-grid { max-width: 1280px; margin: 0 auto; display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr; gap: 4rem; margin-bottom: 4rem; }
-    .footer-logo { font-family: var(--serif); font-size: 1.1rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--paper); text-decoration: none; cursor: pointer; }
-    .footer-logo span { color: var(--gold); }
+    .footer-logo { display: inline-flex; align-items: center; gap: 0.6rem; cursor: pointer; }
+    .footer-logo-monogram { width: 1.75rem; height: 1.75rem; flex-shrink: 0; }
+    .footer-logo-text { font-family: var(--serif); font-size: 1.1rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--paper); }
+    .footer-logo-text span { color: var(--gold); }
     .footer-tagline { font-size: 0.85rem; color: rgba(245,243,239,0.4); margin-top: 1rem; line-height: 1.6; }
     .footer-vat { font-size: 0.7rem; color: rgba(245,243,239,0.25); margin-top: 1.5rem; letter-spacing: 0.05em; }
     .footer-heading { font-size: 0.68rem; letter-spacing: 0.14em; text-transform: uppercase; font-weight: 500; color: rgba(245,243,239,0.3); margin-bottom: 1.5rem; }
@@ -206,8 +213,8 @@
     /* Testimonials */
     .testimonials { background: #eceae4; padding: 7rem 4rem; }
     .testimonials-inner { max-width: 1280px; margin: 0 auto; }
-    .testimonials-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; margin-top: 4rem; background: var(--rule); }
-    .testimonial-card { background: var(--paper); padding: 3.5rem; position: relative; }
+    .testimonials-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; margin-top: 4rem; background: var(--rule); }
+    .testimonial-card { background: var(--paper); padding: 2.75rem; position: relative; }
     .quote-mark { font-family: var(--serif); font-size: 5rem; line-height: 1; color: var(--gold); opacity: 0.3; position: absolute; top: 2rem; left: 3rem; font-style: italic; }
     .testimonial-text { font-family: var(--serif); font-size: 1.15rem; font-weight: 300; line-height: 1.65; color: var(--ink); margin-top: 2.5rem; font-style: italic; }
     .testimonial-author { margin-top: 2rem; padding-top: 1.5rem; border-top: 1px solid var(--rule); display: flex; align-items: center; gap: 1rem; }
@@ -412,26 +419,135 @@
       .pricing-types { grid-template-columns: repeat(2,1fr); }
     }
     @media (max-width: 900px) {
-      nav { padding: 1.25rem 2rem; }
+      nav { padding: 1.25rem 1.5rem; }
+      nav.scrolled { padding: 1rem 1.5rem; }
       nav ul { display: none; }
       .nav-burger { display: flex; }
       .hero { grid-template-columns: 1fr; min-height: auto; }
-      .hero-left { padding: 8rem 2rem 4rem; }
-      .hero-right { min-height: 60vw; }
-      .home-services, .clients-section, .latest-section, .pricing-intro, .laas-section, .blog-section { padding: 5rem 2rem; }
-      .approach, .testimonials { padding: 5rem 2rem; }
-      .services-page-content, .partners-section, .project-fees, .commission-section, .about-philosophy, .join-section, .contact-section { padding: 5rem 2rem; }
-      .nathan-section { padding: 5rem 2rem; }
-      .approach, .service-group-header, .nathan-inner, .commission-inner, .about-philosophy, .join-section, .contact-section { grid-template-columns: 1fr; gap: 3rem; }
+      .hero-left { padding: 7rem 1.5rem 3rem; }
+      .hero h1 { font-size: clamp(2.2rem, 8vw, 3.5rem); }
+      .hero-right { min-height: 55vw; }
+      .hero-stat-block { grid-template-columns: 1fr 1fr; bottom: 1.5rem; left: 1.5rem; right: 1.5rem; }
+      .hero-stat { padding: 1.25rem 1rem; }
+      .hero-stat-number { font-size: 1.75rem; }
+      .hero-actions { flex-wrap: wrap; }
+      .home-services, .clients-section, .latest-section, .pricing-intro, .laas-section, .blog-section { padding: 4rem 1.5rem; }
+      .approach, .testimonials { padding: 4rem 1.5rem; }
+      .services-page-content, .partners-section, .project-fees, .commission-section, .about-philosophy, .join-section, .contact-section { padding: 4rem 1.5rem; }
+      .nathan-section { padding: 4rem 1.5rem; }
+      .approach, .service-group-header, .nathan-inner, .commission-inner, .about-philosophy, .join-section, .contact-section { grid-template-columns: 1fr; gap: 2.5rem; }
       .testimonials-grid, .services-grid, .plans-grid, .fees-grid, .service-items, .partners-grid, .mls-grid, .blog-grid { grid-template-columns: 1fr; }
       .articles-grid { grid-template-columns: 1fr; }
       .clients-logos .client-logo { flex: 0 0 50%; }
       .footer-grid { grid-template-columns: 1fr 1fr; gap: 2rem; }
-      .cta-banner { padding: 5rem 2rem; }
-      .page-header { padding: 8rem 2rem 4rem; }
-      .footer { padding: 3rem 2rem 2rem; }
+      .cta-banner { padding: 4rem 1.5rem; }
+      .cta-title { font-size: clamp(1.75rem, 6vw, 3rem); }
+      .page-header { padding: 7rem 1.5rem 3.5rem; }
+      .page-header h1 { font-size: clamp(2rem, 7vw, 3.5rem); }
+      footer { padding: 3rem 1.5rem 2rem; }
       .form-row { grid-template-columns: 1fr; }
       .pricing-types { grid-template-columns: 1fr; }
+      .section-header { flex-direction: column; align-items: flex-start; gap: 1rem; }
+      .section-title { font-size: clamp(1.75rem, 5vw, 2.5rem); }
+      .container { padding: 0 1.5rem; }
+      .tagline-band { padding: 3rem 1.5rem; }
+      .tagline-band-text { white-space: normal; font-size: clamp(1.1rem, 3.5vw, 1.6rem); text-align: center; }
+      .tagline-band-inner { flex-direction: column; gap: 1.5rem; }
+      .tagline-band-rule { width: 60px; height: 1px; flex: none; }
+      .approach-pillars { grid-template-columns: 1fr; }
+
+      /* Inline-styled sections that need mobile override */
+      section[style*="grid-template-columns: 1fr 1fr"],
+      section[style*="grid-template-columns:1fr 1fr"],
+      section[style*="grid-template-columns: 1fr 1.6fr"],
+      section[style*="grid-template-columns:1fr 1.6fr"] {
+        grid-template-columns: 1fr !important;
+        gap: 2.5rem !important;
+        padding-left: 1.5rem !important;
+        padding-right: 1.5rem !important;
+      }
+
+      /* Home services 3-col override */
+      .services-grid[style*="repeat(3"] {
+        grid-template-columns: 1fr !important;
+      }
+
+      /* Contact details grid on contact page */
+      div[style*="grid-template-columns:repeat(3,1fr)"] {
+        grid-template-columns: 1fr !important;
+      }
+
+      /* Two-col inline grids */
+      div[style*="grid-template-columns:1fr 1fr"] {
+        grid-template-columns: 1fr !important;
+      }
+
+      /* Legal pages padding */
+      div[style*="max-width:800px"][style*="padding:5rem 4rem"] {
+        padding: 3rem 1.5rem 5rem !important;
+      }
+
+      /* Nathan meet strip on homepage */
+      section[style*="grid-template-columns:1fr 1fr"][style*="min-height:420px"] {
+        grid-template-columns: 1fr !important;
+        min-height: auto !important;
+      }
+      section[style*="min-height:420px"] > div:first-child {
+        padding: 3.5rem 1.5rem !important;
+      }
+      section[style*="min-height:420px"] > div:last-child {
+        min-height: 300px;
+      }
+
+      /* Footer bottom stacking */
+      .footer-bottom { flex-direction: column; gap: 1rem; text-align: center; }
+      .footer-legal { justify-content: center; flex-wrap: wrap; }
+
+      /* Contact form */
+      .contact-form { padding: 2rem 1.5rem; }
+
+      /* Plan cards */
+      .plan-card { padding: 2.5rem 2rem; }
+
+      /* Logo sizing on mobile */
+      .logo-monogram { width: 1.75rem; height: 1.75rem; }
+      .logo-text { font-size: 1.1rem; }
+    }
+
+    @media (max-width: 480px) {
+      nav { padding: 1rem 1.25rem; }
+      nav.scrolled { padding: 0.85rem 1.25rem; }
+      .hero-left { padding: 6.5rem 1.25rem 2.5rem; }
+      .hero-stat-block { grid-template-columns: 1fr 1fr; }
+      .hero-stat { padding: 1rem 0.75rem; }
+      .hero-stat-number { font-size: 1.5rem; }
+      .hero-stat-label { font-size: 0.6rem; }
+      .home-services, .clients-section, .latest-section, .pricing-intro, .laas-section, .blog-section { padding: 3rem 1.25rem; }
+      .approach, .testimonials { padding: 3rem 1.25rem; }
+      .services-page-content, .partners-section, .project-fees, .commission-section { padding: 3rem 1.25rem; }
+      .nathan-section { padding: 3rem 1.25rem; }
+      .cta-banner { padding: 3.5rem 1.25rem; }
+      .page-header { padding: 6.5rem 1.25rem 3rem; }
+      footer { padding: 2.5rem 1.25rem 1.5rem; }
+      .footer-grid { grid-template-columns: 1fr; gap: 2rem; }
+      .testimonial-card { padding: 2rem 1.5rem; }
+      .quote-mark { left: 1.5rem; top: 1rem; font-size: 3.5rem; }
+      .service-card { padding: 2rem 1.5rem; }
+      .contact-form { padding: 1.75rem 1.25rem; }
+      .mls-card { padding: 2rem 1.5rem; }
+      .fee-card { padding: 2rem 1.5rem; }
+      .partner-card { padding: 2rem 1.5rem; }
+
+      section[style*="grid-template-columns"] {
+        padding-left: 1.25rem !important;
+        padding-right: 1.25rem !important;
+      }
+      div[style*="max-width:800px"][style*="padding"] {
+        padding: 2.5rem 1.25rem 4rem !important;
+      }
+
+      /* Contact detail blocks */
+      .contact-section { padding: 3rem 1.25rem !important; gap: 2.5rem !important; }
     }
   </style>
 </head>
@@ -439,11 +555,12 @@
 
 <!-- NAV -->
 <nav id="main-nav">
-  <span class="logo" onclick="navigate('home')">SOLIT<span>.</span>LEGAL</span>
+  <span class="logo" onclick="navigate('home')"><svg class="logo-monogram" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><rect width="100" height="100" rx="8" fill="#1a3a2a"/><text font-family="'Cormorant Garamond', Georgia, serif" font-size="52" font-weight="600" fill="#f5f3ef" text-anchor="middle" dominant-baseline="central" x="39" y="50">S</text><text font-family="'Cormorant Garamond', Georgia, serif" font-size="52" font-weight="600" fill="#b8965a" text-anchor="middle" dominant-baseline="central" x="61" y="50">.</text></svg><span class="logo-text">SOLIT<span>.</span>LEGAL</span></span>
   <ul>
     <li><a onclick="navigate('home')" data-page="home">Home</a></li>
     <li><a onclick="navigate('services')" data-page="services">Services</a></li>
     <li><a onclick="navigate('pricing')" data-page="pricing">Pricing</a></li>
+    <li><a onclick="navigate('difference')" data-page="difference">Why us</a></li>
     <li><a onclick="navigate('about')" data-page="about">About</a></li>
     <li><a onclick="navigate('contact')" data-page="contact" class="nav-cta">Contact</a></li>
   </ul>
@@ -458,6 +575,7 @@
   <a onclick="navigate('home');closeMobileNav()">Home</a>
   <a onclick="navigate('services');closeMobileNav()">Services</a>
   <a onclick="navigate('pricing');closeMobileNav()">Pricing</a>
+  <a onclick="navigate('difference');closeMobileNav()">Why us</a>
   <a onclick="navigate('about');closeMobileNav()">About</a>
   <a onclick="navigate('contact');closeMobileNav()">Contact</a>
 </div>
@@ -482,7 +600,7 @@
         <div class="hero-stat-block">
           <div class="hero-stat"><div class="hero-stat-number" data-count="11" data-suffix="+">0</div><div class="hero-stat-label">Years in tech law</div></div>
           <div class="hero-stat"><div class="hero-stat-number" data-count="1326" data-separator="." data-suffix="">0</div><div class="hero-stat-label">Tech contracts negotiated</div></div>
-          <div class="hero-stat"><div class="hero-stat-number" data-count="556" data-suffix="+">0</div><div class="hero-stat-label">eSignatures initiated</div></div>
+          <div class="hero-stat"><div class="hero-stat-number" data-count="2162" data-suffix="+">0</div><div class="hero-stat-label">eSignatures initiated</div></div>
           <div class="hero-stat"><div class="hero-stat-number" data-count="5" data-suffix="+">0</div><div class="hero-stat-label">Legal tech tools in use</div></div>
         </div>
       </div>
@@ -626,6 +744,16 @@
             <div><div class="author-name">Lucas De Dycker</div><div class="author-role">Founder · Forwart</div></div>
           </div>
         </div>
+        <div class="testimonial-card reveal reveal-delay-2">
+          <div class="quote-mark">"</div>
+          <p class="testimonial-text">Nathan understands the dynamics of a commercial negotiation like few legal advisors do. He considers the full deal context — the relationship, the timing, what's at stake — and adapts his approach accordingly. That commercial mindset makes all the difference when you're closing complex partnerships.</p>
+          <div class="testimonial-author">
+            <div class="author-avatar">
+              <img src="data:image/jpeg;base64,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" alt="Magali Biron" onerror="this.style.display='none';this.parentNode.innerHTML='<span class=\'author-avatar-init\'>MB</span>'" />
+            </div>
+            <div><div class="author-name">Magali Biron</div><div class="author-role">VP Business Development · Nitro</div></div>
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -685,6 +813,7 @@
       <span class="ticker-item">Channel Agreements</span><span class="ticker-dot"> ✦ </span>
       <span class="ticker-item">Legal Front Door</span><span class="ticker-dot"> ✦ </span>
       <span class="ticker-item">Contract Management</span><span class="ticker-dot"> ✦ </span>
+      <span class="ticker-item">General Counsel as a Service</span><span class="ticker-dot"> ✦ </span>
       <span class="ticker-item">IT Contract Drafting</span><span class="ticker-dot"> ✦ </span>
       <span class="ticker-item">SaaS Agreements</span><span class="ticker-dot"> ✦ </span>
       <span class="ticker-item">GDPR Compliance</span><span class="ticker-dot"> ✦ </span>
@@ -693,6 +822,7 @@
       <span class="ticker-item">Channel Agreements</span><span class="ticker-dot"> ✦ </span>
       <span class="ticker-item">Legal Front Door</span><span class="ticker-dot"> ✦ </span>
       <span class="ticker-item">Contract Management</span><span class="ticker-dot"> ✦ </span>
+      <span class="ticker-item">General Counsel as a Service</span><span class="ticker-dot"> ✦ </span>
     </div>
   </div>
 
@@ -788,6 +918,35 @@
           <div class="service-item">
             <div class="service-item-title">Legal Team Management</div>
             <div class="service-item-desc">Running Legal as a business. We help you get started, optimise human capital, and implement effective management models to drive success in your legal department.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Group 4 -->
+      <div class="service-group reveal">
+        <div class="service-group-header">
+          <div>
+            <div class="section-label">04</div>
+            <h2 class="service-group-title">General Counsel <em>as a Service</em></h2>
+          </div>
+          <p style="font-size:0.95rem;color:var(--muted);line-height:1.75;align-self:end;">Not every technology company needs a full-time General Counsel — but every growing company needs strategic legal leadership. We offer fractional and embedded GC services that go beyond classic legal support, bringing extensive international experience to help your business navigate complex legal challenges.</p>
+        </div>
+        <div class="service-items">
+          <div class="service-item">
+            <div class="service-item-title">Strategic Legal Advisory</div>
+            <div class="service-item-desc">Acting as your organisation's legal sparring partner at management level. We advise on corporate strategy, risk management, and business-critical decisions — providing the strategic oversight of a General Counsel without the full-time commitment.</div>
+          </div>
+          <div class="service-item">
+            <div class="service-item-title">Commercial Negotiations</div>
+            <div class="service-item-desc">Hands-on support during high-value commercial negotiations, M&A transactions, and strategic partnerships. We sit at the table with you, protecting your interests while enabling the deal to move forward.</div>
+          </div>
+          <div class="service-item">
+            <div class="service-item-title">Legal Team & Vendor Management</div>
+            <div class="service-item-desc">Building and managing your legal function — from recruiting and leading in-house teams to coordinating external counsels. We ensure your legal resources are aligned with your business objectives and budget.</div>
+          </div>
+          <div class="service-item">
+            <div class="service-item-title">Compliance & Governance</div>
+            <div class="service-item-desc">Establishing and overseeing compliance frameworks, corporate governance structures, and regulatory roadmaps. We help you stay ahead of regulatory changes across GDPR, AI Act, and sector-specific requirements.</div>
           </div>
         </div>
       </div>
@@ -1038,7 +1197,7 @@
         <div class="section-label">Meet the founder</div>
         <h2 class="nathan-title">Nathan Schryvers</h2>
         <p class="nathan-bio">An experienced legal advisor for technology companies, offering guidance to both start- and scale-ups, as well as publicly listed corporations. His expertise centres around companies in the fintech, healthcare, and identity and electronic signing sector.</p>
-        <p class="nathan-bio">Nathan takes a client-centric approach, aligning his strategies and negotiations with the culture and risk appetite of the companies he works for. He previously practised as a technology lawyer in a boutique technology law firm before founding SOLIT.LEGAL.</p>
+        <p class="nathan-bio">Nathan takes a client-centric approach, aligning his strategies and negotiations with the culture and risk appetite of the companies he works for. He has built highly effective legal teams that embrace AI and legal tech, enabling businesses to grow over 20% in ARR with the same legal headcount — by making processes leaner, more efficient, and AI-driven. He previously practised as a technology lawyer in a boutique technology law firm before founding SOLIT.LEGAL.</p>
         <ul class="nathan-credentials">
           <li>General Counsel</li>
           <li>Data Protection Officer</li>
@@ -1063,12 +1222,36 @@
         </div>
         <div class="nathan-email">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="rgba(245,243,239,0.5)" stroke-width="1.5"><path d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75"/></svg>
-          <a href="/cdn-cgi/l/email-protection#e48a85908c858aca97878c969d92819697a4978b888d90ca8881838588" style="color:rgba(245,243,239,0.5);text-decoration:none;"><span class="__cf_email__" data-cfemail="a4cac5d0ccc5ca8ad7c7ccd6ddd2c1d6d7e4d7cbc8cdd08ac8c1c3c5c8">[email&#160;protected]</span></a>
+          <a href="mailto:nathan.schryvers@solit.legal" style="color:rgba(245,243,239,0.5);text-decoration:none;">nathan.schryvers@solit.legal</a>
         </div>
         <div style="margin-top:2.5rem;padding:2rem 2.25rem;border:1px solid rgba(184,150,90,0.25);background:rgba(184,150,90,0.06);">
           <div style="font-size:0.68rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--gold);font-weight:500;margin-bottom:0.75rem;">Current role</div>
           <div style="font-family:var(--serif);font-size:1.15rem;color:var(--paper);line-height:1.3;margin-bottom:0.75rem;">Head of Legal · Nitro Software</div>
           <p style="font-size:0.87rem;color:rgba(245,243,239,0.6);line-height:1.7;margin:0;">Nathan currently serves as Head of Legal at Nitro Software, a global leader in document productivity and e-signing solutions serving over 13,000 organisations across 150+ countries, and manages Nitro's global Legal Team. Alongside this role, he offers managed legal services to technology companies as fractional General Counsel.</p>
+          <div style="margin-top:1.25rem;">
+            <button onclick="var el=document.getElementById('nitro-details');var arr=this.querySelector('.expand-arrow');if(el.style.maxHeight&&el.style.maxHeight!=='0px'){el.style.maxHeight='0px';el.style.opacity='0';arr.style.transform='rotate(0deg)';}else{el.style.maxHeight=el.scrollHeight+'px';el.style.opacity='1';arr.style.transform='rotate(180deg)';}" style="background:none;border:none;cursor:pointer;display:inline-flex;align-items:center;gap:0.5rem;font-family:var(--sans);font-size:0.72rem;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:var(--gold);padding:0;">
+              Learn more about Nathan's role at Nitro
+              <svg class="expand-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="transition:transform 0.3s ease;"><path d="M6 9l6 6 6-6"/></svg>
+            </button>
+          </div>
+          <div id="nitro-details" style="max-height:0px;opacity:0;overflow:hidden;transition:max-height 0.4s ease,opacity 0.3s ease;">
+            <div style="padding-top:1.5rem;border-top:1px solid rgba(245,243,239,0.08);margin-top:1.25rem;">
+              <p style="font-size:0.87rem;color:rgba(245,243,239,0.6);line-height:1.7;margin:0 0 1rem;">In 2021, Connective became a part of Nitro, marking Nathan's transition to Nitro. In 2023, Nitro was acquired by Potentia Capital, an Australian specialist private equity investor focusing on technology and tech-enabled businesses. Nitro offers a range of software and SaaS solutions in Digital Productivity and Workflow Management, including Nitro PDF, Nitro Sign, Nitro Identity Hub and Nitro AI.</p>
+              <p style="font-size:0.87rem;color:rgba(245,243,239,0.6);line-height:1.7;margin:0 0 1rem;">Nathan has the privilege of operating on a global scale, shaping Nitro's legal strategies and initiatives across Europe (EMEA), North America (NAMER) and the Asia-Pacific (APAC) regions — navigating diverse legal landscapes and collaborating with international teams.</p>
+              <div style="font-size:0.68rem;letter-spacing:0.12em;text-transform:uppercase;color:rgba(245,243,239,0.35);font-weight:500;margin-bottom:1rem;">Key legal milestones at Nitro</div>
+              <ul style="list-style:none;margin:0;padding:0;">
+                <li style="padding:0.6rem 0;border-bottom:1px solid rgba(245,243,239,0.06);font-size:0.85rem;color:rgba(245,243,239,0.55);display:flex;align-items:center;gap:0.75rem;"><span style="color:var(--gold);flex-shrink:0;">✓</span>Facilitating Connective's acquisition by Nitro (ASX listed, 2021)</li>
+                <li style="padding:0.6rem 0;border-bottom:1px solid rgba(245,243,239,0.06);font-size:0.85rem;color:rgba(245,243,239,0.55);display:flex;align-items:center;gap:0.75rem;"><span style="color:var(--gold);flex-shrink:0;">✓</span>Drafting Nitro's new SaaS Subscription and on-premise software agreements</li>
+                <li style="padding:0.6rem 0;border-bottom:1px solid rgba(245,243,239,0.06);font-size:0.85rem;color:rgba(245,243,239,0.55);display:flex;align-items:center;gap:0.75rem;"><span style="color:var(--gold);flex-shrink:0;">✓</span>Recruiting and managing Nitro's Legal Team and external counsels</li>
+                <li style="padding:0.6rem 0;border-bottom:1px solid rgba(245,243,239,0.06);font-size:0.85rem;color:rgba(245,243,239,0.55);display:flex;align-items:center;gap:0.75rem;"><span style="color:var(--gold);flex-shrink:0;">✓</span>Establishing Nitro's legal template database for business self-service</li>
+                <li style="padding:0.6rem 0;border-bottom:1px solid rgba(245,243,239,0.06);font-size:0.85rem;color:rgba(245,243,239,0.55);display:flex;align-items:center;gap:0.75rem;"><span style="color:var(--gold);flex-shrink:0;">✓</span>Setting up Legal Tech solutions and Legal Operations to enhance efficiency</li>
+                <li style="padding:0.6rem 0;border-bottom:1px solid rgba(245,243,239,0.06);font-size:0.85rem;color:rgba(245,243,239,0.55);display:flex;align-items:center;gap:0.75rem;"><span style="color:var(--gold);flex-shrink:0;">✓</span>Developing Nitro's Legal and Data Protection roadmaps</li>
+                <li style="padding:0.6rem 0;border-bottom:1px solid rgba(245,243,239,0.06);font-size:0.85rem;color:rgba(245,243,239,0.55);display:flex;align-items:center;gap:0.75rem;"><span style="color:var(--gold);flex-shrink:0;">✓</span>Getting Nitro certified under the EU-US Data Privacy Framework</li>
+                <li style="padding:0.6rem 0;border-bottom:1px solid rgba(245,243,239,0.06);font-size:0.85rem;color:rgba(245,243,239,0.55);display:flex;align-items:center;gap:0.75rem;"><span style="color:var(--gold);flex-shrink:0;">✓</span>Setting up Nitro's AI Governance Framework</li>
+                <li style="padding:0.6rem 0;font-size:0.85rem;color:rgba(245,243,239,0.55);display:flex;align-items:center;gap:0.75rem;"><span style="color:var(--gold);flex-shrink:0;">✓</span>Integrating Nitro's internal processes with OneTrust Privacy Management Software</li>
+              </ul>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -1098,6 +1281,108 @@
 </div><!-- /about -->
 
 
+<!-- ═══════════════════════════════════ WHY WE'RE DIFFERENT ═══════════════════════════════════ -->
+<div class="page" id="page-difference">
+  <div class="page-header">
+    <div class="page-header-inner">
+      <div class="section-label">Why we're different</div>
+      <h1>Technology-powered.<br><em>Business-aligned.</em></h1>
+      <p>We combine legal expertise with technology, transparency and a commercial mindset — so your legal function drives business, not bottlenecks it.</p>
+    </div>
+  </div>
+
+  <!-- Intro band -->
+  <div class="tagline-band">
+    <div class="tagline-band-inner">
+      <span class="tagline-band-rule"></span>
+      <span class="tagline-band-text">Legal advice should <em>enable</em> your business, not slow it down</span>
+      <span class="tagline-band-rule"></span>
+    </div>
+  </div>
+
+  <!-- Pillar 1: Legal Tech & AI -->
+  <section style="padding:7rem 4rem;max-width:1280px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:6rem;align-items:center;">
+    <div class="reveal">
+      <div class="section-label">01 · Legal Tech &amp; AI</div>
+      <h2 class="section-title">Embracing <em>Legal Tech &amp; AI</em></h2>
+      <p style="font-size:1rem;color:var(--muted);line-height:1.75;margin-top:1.75rem;margin-bottom:1.5rem;">We don't just talk about innovation — we build it into every engagement. By integrating AI-powered tools and purpose-built legal technology into our workflows, we deliver work with more depth, more detail, and faster than ever before.</p>
+      <p style="font-size:1rem;color:var(--muted);line-height:1.75;">From AI-assisted contract review and intelligent drafting to automated workflow management — these tools allow us to focus our expertise where it matters most while maintaining rigorous human oversight on every output.</p>
+    </div>
+    <div class="reveal reveal-delay-1">
+      <div style="display:grid;gap:1px;background:var(--rule);">
+        <div class="about-value"><div class="about-value-icon">↗</div><div><div class="about-value-title">Faster turnaround</div><p class="about-value-desc">AI-powered tools accelerate contract review, drafting, and research — delivering results in hours, not days.</p></div></div>
+        <div class="about-value"><div class="about-value-icon">◎</div><div><div class="about-value-title">Greater depth &amp; detail</div><p class="about-value-desc">Technology allows us to analyse more data points and surface risks that manual review might miss.</p></div></div>
+        <div class="about-value"><div class="about-value-icon">⚖</div><div><div class="about-value-title">Human oversight guaranteed</div><p class="about-value-desc">Every AI-generated output is reviewed and validated by experienced legal professionals. Technology supports us — it doesn't replace us.</p></div></div>
+        <div class="about-value"><div class="about-value-icon">◈</div><div><div class="about-value-title">Legal AI Agents</div><p class="about-value-desc">Custom-built AI agents that handle routine legal tasks for your organisation — from contract triage to compliance monitoring.</p></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pillar 2: Legal Intelligence -->
+  <section style="background:var(--accent);padding:7rem 4rem;">
+    <div style="max-width:1280px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:6rem;align-items:center;">
+      <div class="reveal">
+        <div style="position:relative;border-radius:4px;overflow:hidden;box-shadow:0 8px 40px rgba(0,0,0,0.3);">
+          <img src="data:image/jpeg;base64,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WmNRsPopNwLFcjIGSKWgoKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKAI5vuj61DU033R9ahpMYUUUUgCiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKni/wBUv0qCpYnUKFJwR600A27tlu4hGxwAc9M1WXSyFcNcu25NgyOV5yfwP8qvb0/vr+dG9P76/nTEZraKp3YuZFzzwOhzn8vali0ZY5kkNzLJtffh+a0d6f31/Ojen99fzoAp3OmJcuG81kK7duOwGf15zn2FRTaQ0tz5ounUMxYj0+nv6HtWjvT++v50b0/vr+dAFG00pbWRZPtEsjKerHr1/wAc/hWhTd6f31/Ojen99fzoAdRTd6f31/Ojen99fzoAdRTd6f31/Ojen99fzoAdRTd6f31/Ojen99fzoAdRTd6f31/Ojen99fzoAdRTd6f31/Ojen99fzoAdRTd6f31/Ojen99fzoAdRTd6f31/Ojen99fzoAdRTd6f31/Ojen99fzoAdRTd6f31/Ojen99fzoAdRTd6f31/Ojen99fzoAdRTd6f31/Ojen99fzoAdRTd6f31/Ojen99fzoAdRTd6f31/Ojen99fzoAdUEv+s/AVL5if31/OoHbc5I6dKTAfB1b8KfIgkiZD0YEHIzUcbhGOeAe9S70/vr+dAFFNIjQMfOk3tGU3A9M9x+GB9BUI0FVDgXUo3dv4Rznp6c1qb0/vr+dG9P76/nTAqWmmpas5EruGxw3YjPP60yDSUhgETSmRRvABXgBjyB6ccfnV7en99fzo3p/fX86AKEei28ciyb5GdWVsk/eIOcn1PX8zTTocBOPNcJncFHY7t1aO9P76/nRvT++v50AVbGwFkXIlZy+AcjpjP8AjVym70/vr+dG9P76/nQA6im70/vr+dG9P76/nQA6im70/vr+dG9P76/nQA6im70/vr+dG9P76/nQA6im70/vr+dG9P76/nQA6im70/vr+dG9P76/nQA6im70/vr+dG9P76/nQA6im70/vr+dG9P76/nQA6im70/vr+dG9P76/nQA6im70/vr+dG9P76/nQA6im70/vr+dG9P76/nQA6im70/vr+dG9P76/nQA6im70/vr+dG9P76/nQA6im70/vr+dG9P76/nQA2b7o+tQ1JK4bAU5wc5qOkMKKKKQBRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFOSMuM5wKYDaKk8k/3v0o8k/3v0oAjoqTyT/e/SjyT/e/SgCOipPJP979KPJP979KAI6Kk8k/3v0o8k/3v0oAjoqTyT/e/SjyT/e/SgCOipPJP979KPJP979KAI6Kk8k/3v0o8k/3v0oAjoqTyT/e/SjyT/e/SgCOipPJP979KPJP979KAI6Kk8k/3v0o8k/3v0oAjoqTyT/e/SjyT/e/SgCOipPJP979KPJP979KAI6Kk8k/3v0o8k/3v0oAjoqTyT/e/SjyT/e/SgCOipPJP979KPJP979KAI6Kk8k/3v0o8k/3v0oAjoqTyT/e/SjyT/e/SgCOipPJP979KPJP979KAI6Kk8k/3v0o8k/3v0oAjoqTyT/e/SjyT/e/SgCOipPJP979KPJP979KAI6Kk8k/3v0o8k/3v0oAjoqTyT/e/SjyT/e/SgCOipPJP979KPJP979KAI6Kk8k/3v0o8k/3v0oAjoqTyT/e/SjyT/e/SgCOipPJP979KPJP979KAI6Kk8k/3v0o8k/3v0oAjoqTyT/e/SjyT/e/SgCOipPJP979KPJP979KAI6Kk8k/3v0o8k/3v0oAjoqTyT/e/SjyT/e/SgCOipPJP979KPJP979KAI6Kk8k/3v0o8k/3v0oAjoqTyT/e/SjyT/e/SgCOipPJP979KPJP979KAI6Kc6FDycg96bSAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKni/1S1BU8X+qX6U0A+ioLqFp41VHZCHUkqxXIzyOPaqUtnqL5C3W3DcYc8jLH8OoHfpTEalFZjWmp7ZFW7HzkFSScqMk4/kKDZ35klYz5V2BEYkZcDnjPbt09KANOis02monC/awMAfOCck/LnjHsfzp1ta3yTo80+5QBuw5weDxj64OfagDQorOayvAmIrplO5jlnLYG4EdfYEfjS29rex3SvNceYgBB+Yjkknp06EflQBoUVm21lep5fnXTHbJlgHJyuOn5j8s0strfMsyxzBWd8rIXPC5zgL0HpQBo0VnSWd22WWZgWlDEea2Nu3kD8ab9kv/wB5unDAsDgSMCw57/w9uB6UAadFZYsdQ/eE3hyUUIQx4YYycfn/AJ6aartULknAxknJoAWiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooqOYkJx3OKT0AUyIDguAfrR5sf99fzrOu7prZo1WMN5mQOf4uMD9arnVXVMmJW/fGPcrZUDGdxPp61k6qW5ag2bPmx/31/OjzY/76/nWKNYdAHntisZLbWU9cEDv9all1aKGR1aGbCEjcAMHr7+xpe2Q+RmqJEY4DAn60+s20uvtiu3lMiqwA3dSMA5/Wr8RJjBPXpWkZcxDVhJvuj61DU033R9ahqmAUUUUgCiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKni/wBUv0qCp4v9Uv0poB9FFFMQUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFNZQ6lT3p1FAEBhf1U/WjyX/wBmp6KnlQ7kHkv/ALNHkv8A7NT0UcqC5AIX7kAe1TKoVQB0FLRTSsK5HN90fWoamm+6PrUNDGFFFFIAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACp4v8AVL9KgqeL/VL9KaAgvpLqOJTaRiR8nKn0wf64qsbjUsTBYNzYwmVwAcjHfkYyfwrTopiGQuzwozoUYqCVPY+lPoooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKAK19JcRwqbZdz7hkYzx3qFLq884+ZbMsfm4BC5OzBx39QPzq/RQBmQT6iWh82M4ZyJBsxgdua06KKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigCC7e4SNTboHYsAQeBioLGW+kmcXUYRNqleO+Bmr1FABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABR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jY/9w0AS+cvofyo85fQ/lUWx/wC4aNj/ANw0AS+cvofyo85fQ/lUWx/7ho2P/dNADpH34AGAKZRyDgjBooGFFFFIAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACp4v9WPeoKni/1S/SmgH0VBdSzRRqYUViXVSGz3OM8VVOpTAv+4A2ozAHOXIJ6ce360xGjRWYNSuHfasCqfKL4Ynrk/L9eKel/OWkV4RlIPMG3JycZxQBoUVQtL64uXiDW4RXVmLZ6YOP14/WoYtVuHaMNa7d7MDk84GMfnmgDVorKTV5WRibfkHHGcZIyB069qcmpzsyjyFG6Yx9TkDsaANOiqIurs20cnlR73k2FcngZxnpTRfXZlVBaA5kKH5uwxk/rQBoUVVsLp7u382RAhzjaO1WqACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKglGJD9KnqCX/WfgKTAWH7zH6VNUMHVvwqVt207cbscZ6UIBaKzf7RuBGheBVLqrFiTtXOevHsPzpsmqTpvxbY2yBATn5hk/N9OKYGpRWe19cRybXhQqZhHlSc4wDnH4019RuBNPGlruETAA5I3ZOP6j8M0AaVFZ9zqE0E7xrAH2pu4zk8E+nTjH40walcbS32XcojDZU/xHOB+dAGnRWX/AGpcMW2WuAIfMBbI5xyvTrTpdSuImdDZsxTPzj7p+Td9evFAGlRWbHqNxJJHGLb74B35O0HDHB/IVctZJJraOWVQrOoYqO2aAJqKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAim+6D71FU033R9ahpMYUUUUgCiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKni/wBUv0qCp4v9Uv0poB9FZ+sahJp8ETR+Uokk2NLNnZGME5OPXGPqayh4uMUxgm0+4kk3OFMSfKQvuT3piOlorCj8SMYpZptPliRZ0hTLDklcknsMHI9zj1qB/F2+2eS20u5kYA43EAZwSBnPsQfQ8UAdJRXPz+LI7aRUl0+4UsCRyvTLDPXgfKcntkZ61IfEckdpJcS6bMQryACJg2UQA7vxz0FAG5RXOS+L0jgEx028CBQzZQdGGRg5xj1Par2na6mo3jWq2V3CyJvZpY8L2wAe55HSgDVooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAopKzTqzC48k20q/vdmWUjj1Hqfp2oA06gl/1n4Cp6gl/1n4CkwFg6t+FTVDB1b8KW4kaG2llUAsiFgGOASB3NCAlorlk8ZHyYg1jK8pXdJ5a5BAODtGSTx0PQnvWppGvRavK0aW00JWJZMyYwQSRxj6UwNWiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACis261GeCdo1SM4YgZOONuQfz4NXbWb7RbRykY3DPTFACzfdH1qGppvuj61DSYwooopAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAVPF/ql+lQVPF/ql+lNAZniPU9Q0nTRcaZpMmpzGQKYY2wQP73Q/5Ncv/AMJv4u/6ES6/7+N/8TXa3t/BYRLJOW+ZtqqiFmY4J4A9gT+FNGqafuCm9twxIAUyAHJGQMdc+1Mlp9zi/wDhN/F3/QiXX/fxv/iaX/hN/F3/AEIl1/38b/4muxOsaYBk6jagEZz5y+uPX1pyapYuIv8AS4laYZjR3CswzjgHmgVn3OM/4Tfxd/0Il1/38b/4mk/4Tfxd/wBCJdf9/G/+JrspdY0yGN3kv7cBBlv3oyOM9PoM0i6zpjR7/t9uq43fPIF4zjPPbPegLPucf/wm/i7/AKES6/7+N/8AE0f8Jv4u/wChEuv+/jf/ABNd6CGAIIIPQiloCz7nA/8ACb+Lv+hEuv8Avtv/AImj/hN/F3/QiXX/AH23/wATXfUUBZ9zgf8AhN/F3/QiXX/fbf8AxNH/AAm/i7/oRLr/AL7b/wCJrvqKAs+5wP8Awm/i7/oRLr/vtv8A4mj/AITfxd/0Il1/323/AMTXfUUBZ9zgf+E38Xf9CJdf99t/8TR/wm/i7/oRLr/vtv8A4mu+ooCz7nA/8Jv4u/6ES6/77b/4mj/hN/F3/QiXX/fbf/E131FAWfc4H/hN/F3/AEIl1/323/xNH/Cb+Lv+hEuv++2/+JrvqKAs+5wP/Cb+Lv8AoRLr/vtv/iaP+E38Xf8AQiXX/fbf/E131FAWfc4H/hN/F3/QiXX/AH23/wATR/wm/i7/AKES6/77b/4mu+ooCz7nA/8ACb+Lv+hEuv8Avtv/AImj/hN/F3/QiXX/AH23/wATXfUUBZ9zgf8AhN/F3/QiXX/fbf8AxNH/AAm/i7/oRLr/AL7b/wCJrvqKAs+5wP8Awm/i7/oRLr/vtv8A4mj/AITfxd/0Il1/323/AMTXfUUBZ9zgf+E38Xf9CJdf99t/8TR/wm/i7/oRLr/vtv8A4mu+ooCz7nA/8Jv4u/6ES6/77b/4mprPxl4qnvYYZvBNzFHJIFeQyEbQTyeVxxXcVXa+t1lEZfLF9mAO+M0BZ9yxUEv+s/AVPUEv+s/AUmULB1b8KdO7xwSSRxmV1UlUBwWIHApsHVvwp080dvBJPKdscSl2OOgAyaEBxn/CYeKP+hMuf++z/wDE0f8ACYeKP+hMuf8Avtv/AImuog1vTp1Q/akjLjKrKdhYdeAaeNX0wruGo2pAXdkTL0zjPX14osRyvucp/wAJh4o/6Ey5/wC+2/8AiaP+Ew8Uf9CZc/8Afbf/ABNdlDcQXKs0E0coVirFGDYPocd6losHK+5xH/CYeKP+hMuf++2/+Jo/4TDxR/0Jlz/323/xNdvRRYOV9ziP+Ew8U/8AQmXP/fbf/E0f8Jh4o/6Ey5/77b/4mu3oosHK+5xH/CYeKf8AoTLn/vtv/iaP+Ew8Uf8AQmXP/fbf/E129FFg5X3OI/4TDxR/0Jlz/wB9t/8AE0f8Jh4o/wChMuf++2/+Jrt6KLByvucR/wAJh4o/6Ey5/wC+2/8AiaP+Ew8Uf9CZc/8Afbf/ABNdvRRYOV9ziP8AhMPFH/QmXP8A323/AMTR/wAJh4o/6Ey5/wC+2/8Aia7eiiwcr7nEf8Jh4p/6Ey5/77b/AOJo/wCEw8Uf9CZc/wDfbf8AxNdvRRYOV9ziP+Ew8Uf9CZc/99t/8TR/wmHin/oTLn/vtv8A4mu3oosHK+5xH/CYeKP+hMuf++2/+Jo/4TDxR/0Jlz/323/xNdvRRYOV9ziP+Ew8Uf8AQmXP/fbf/E0f8Jh4o/6Ey5/77b/4mu3oosHK+5xH/CYeKP8AoTLn/vtv/iaP+Ew8Uf8AQmXP/fbf/E129FFg5X3OI/4TDxT/ANCZc/8Afbf/ABNH/CYeKP8AoTLn/vtv/ia7eiiwcr7nEf8ACYeKP+hMuf8Avtv/AImj/hMPFP8A0Jlz/wB9t/8AE129FFg5X3OI/wCEw8Uf9CZc/wDfbf8AxNH/AAmHij/oTLn/AL7b/wCJrt6KLByvucR/wmHij/oTLn/vtv8A4mus0y5uLzTYLi6tGtJ5Fy8DHJQ+maknu4bZgJmKAgncQdowM9foDUsbrLGsiHKsMg+1A0muo2b7o+tQ1NN90fWoaGWFFFFIAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACp4v9Uv0qCp4v9Uv0poDL8SXWjWenrLrdwLeDzNqPuZTuIIwNvPIz+Ga5mPXfhtFv2XkChwAVCS4x6dOOldre2FnqMHkX1rDcxZzslQMM+uDWf/wiXhz/AKAWn/8AgOv+FMl36HNLr3w5S1+zJqKJGf7vnA9GHXGejMPoaW48Q/D+5eBm1fZ5IAATzQCAGxnjqCxIPUV0n/CJeHP+gFp//gOv+FH/AAiXhz/oBaf/AOA6/wCFAveOYTW/hvGfkvol+bdwJeuCPT3P51J/wkXw78/zv7Rj3bt3SXG7PXGMZ9/Suj/4RLw5/wBALT//AAHX/Cj/AIRLw5/0AtP/APAdf8KA94zofiD4OghSGPWYgkahVHlycAcD+Gn/APCxvCP/AEGov+/b/wDxNXv+ES8Of9ALT/8AwHX/AAo/4RLw5/0AtP8A/Adf8KA94o/8LG8I/wDQai/79v8A/E0f8LG8I/8AQai/79v/APE1e/4RLw5/0AtP/wDAdf8ACj/hEvDn/QC0/wD8B1/woD3ij/wsbwj/ANBqL/v2/wD8TR/wsbwj/wBBqL/v2/8A8TV7/hEvDn/QC0//AMB1/wAKP+ES8Of9ALT/APwHX/CgPeKP/CxvCP8A0Gov+/b/APxNH/CxvCP/AEGov+/b/wDxNXv+ES8Of9ALT/8AwHX/AAo/4RLw5/0AtP8A/Adf8KA94o/8LG8I/wDQai/79v8A/E0f8LG8I/8AQai/79v/APE1e/4RLw5/0AtP/wDAdf8ACj/hEvDn/QC0/wD8B1/woD3ij/wsbwj/ANBqL/v2/wD8TR/wsbwj/wBBqL/v2/8A8TV7/hEvDn/QC0//AMB1/wAKP+ES8Of9ALT/APwHX/CgPeKP/CxvCP8A0Gov+/b/APxNH/CxvCP/AEGov+/b/wDxNXv+ES8Of9ALT/8AwHX/AAo/4RLw5/0AtP8A/Adf8KA94o/8LG8I/wDQai/79v8A/E0f8LG8I/8AQai/79v/APE1e/4RLw5/0AtP/wDAdf8ACj/hEvDn/QC0/wD8B1/woD3ij/wsbwj/ANBqL/v2/wD8TR/wsbwj/wBBqL/v2/8A8TV7/hEvDn/QC0//AMB1/wAKP+ES8Of9ALT/APwHX/CgPeKP/CxvCP8A0Gov+/b/APxNH/CxvCP/AEGov+/b/wDxNXv+ES8Of9ALT/8AwHX/AAo/4RLw5/0AtP8A/Adf8KA94o/8LG8I/wDQai/79v8A/E0f8LG8I/8AQai/79v/APE1e/4RLw5/0AtP/wDAdf8ACj/hEvDn/QC0/wD8B1/woD3ij/wsbwj/ANBqL/v2/wD8TR/wsbwj/wBBqL/v2/8A8TV7/hEvDn/QC0//AMB1/wAKP+ES8Of9ALT/APwHX/CgPeKP/CxvCP8A0Gov+/b/APxNH/CxvCP/AEGov+/b/wDxNXv+ES8Of9ALT/8AwHX/AAo/4RLw5/0AtP8A/Adf8KA94o/8LG8I/wDQai/79v8A/E1oWL6NqkC6hYukkVwQ3mR5UOQT1H1z1pv/AAiXhz/oBaf/AOA6/wCFaNvZ2tnAkFtbxQxIMIkaBQv0AoGr9SeoJf8AWfgKnqCX/WfgKTGLB1b8KLsQNZzLckCAxsJSTgbcc8/SiDq34VIyq6lWAZSMEEZBFCA42bXPAM+4SXcJDIEICyAbQQQOB7CmDWfAQUY1H5lcyCTdNvDE5J3dc10X/CMaB/0BrH/vwv8AhR/wjGgf9Aax/wC/C/4Uake+Y+n+KvBelRPFZajFEjuXYbJDyfqKt/8ACfeF/wDoLx/9+3/wq7/wjGgf9Aax/wC/C/4Uf8IxoH/QGsf+/C/4Uah75S/4T7wv/wBBeP8A79v/AIUf8J94X/6C8f8A37f/AAq7/wAIxoH/AEBrH/vwv+FH/CL6B/0BrH/vwv8AhRqHvly21C0vLaO5t51khlXcjr0IqXz4v79JFbQQRLFFDHHGgwqqoAA9AKd5af3F/KmWJ58X9+jz4v79L5af3F/Kjy0/uL+VACefF/fo8+L+/S+Wn9xfyo8tP7i/lQAnnxf36PPi/v0vlp/cX8qPLT+4v5UAJ58X9+jz4v79L5af3F/Kjy0/uL+VACefF/fo8+L+/S+Wn9xfyo8tP7i/lQAnnxf36PPi/v0vlp/cX8qPLT+4v5UAJ58X9+jz4v79L5af3F/Kjy0/uL+VACefF/fo8+L+/S+Wn9xfyo8tP7i/lQAnnxf36PPi/v0vlp/cX8qPLT+4v5UAJ58X9+jz4v79L5af3F/Kjy0/uL+VACefF/fo8+L+/S+Wn9xfyo8tP7i/lQAnnxf36PPi/v0vlp/cX8qPLT+4v5UAVp4bS5kV5WYlVKjDEDB9qsQRxxQqkX3B05zS+XH/AHF/KnAADAGBQAyb7o+tQ1NN90fWoaTGFFFFIAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACp4v9Uv0qCp4v9Uv0poClrGnyahBEiGJvLk3mKYExyDBGGx6Zz9QKyV8M6lAWkttbmWbZtV3yw+6q9Cf9kn8a0PEehHxBposxqFzY4kD+ZbtgnHY+3Nct/wq1v8AoatW/wC/n/16ZLb7HXaTY3lnE322+e6kbaASeFAA6fjnmtGuA/4Va3/Q1at/38/+vR/wq1v+hq1b/v5/9egV32O/orgP+FWt/wBDVq3/AH8/+vR/wq1v+hq1b/v5/wDXoC77Hf0VwH/CrW/6GrVv+/n/ANej/hVrf9DVq3/fz/69AXfY7+iuA/4Va3/Q1at/38/+vR/wq1v+hq1b/v5/9egLvsd/RXAf8Ktb/oatW/7+f/Xo/wCFWt/0NWrf9/P/AK9AXfY7+iuA/wCFWt/0NWrf9/P/AK9H/CrW/wChq1b/AL+f/XoC77Hf0VwH/CrW/wChq1b/AL+f/Xo/4Va3/Q1at/38/wDr0Bd9jv6K4D/hVrf9DVq3/fz/AOvR/wAKtb/oatW/7+f/AF6Au+x39FcB/wAKtb/oatW/7+f/AF6P+FWt/wBDVq3/AH8/+vQF32O/orgP+FWt/wBDVq3/AH8/+vR/wq1v+hq1b/v5/wDXoC77Hf0VwH/CrW/6GrVv+/n/ANej/hVrf9DVq3/fz/69AXfY7+iuA/4Va3/Q1at/38/+vXWaRox0nS4bE31xdeUCPNmbLNznmgab6o06Kg+z/wDTRqPs/wD00agZPRUH2f8A6aNR9n/6aNQBPRUH2f8A6aNR9n/6aNQBPWadOuPtbTx3CxAyiTYFyG7HP4fzq39n/wCmjUot8EHzGpATVBL/AKz8BU9QS/6z8BQwFg6t+FJewNdWNxbo+xpYmQN/dJBGaWDq34U6eLzoJIt7JvUrvQ4ZcjqPehAc/B4XuYdZhv31F5liYHY45YbQOo6dO3XvmukriP8AhW7f9DLqn/ff/wBej/hW7f8AQy6p/wB9/wD16NSLy7Hb0VxH/Ct2/wChl1T/AL7/APr0f8K3b/oZdU/77/8Ar0aheXY7eiuI/wCFbt/0Muqf99//AF62NA8LHQzMTqt5eebjid8hcelGo031Rv0VB9n/AOmjUfZ/+mjUyieioPs//TRqPs//AE0agCeioPs//TRqPs//AE0agCeioPs//TRqPs//AE0agCeioPs//TRqPs//AE0agCeioPs//TRqPs//AE0agCeioPs//TRqPs//AE0agCeioPs//TRqPs//AE0agCeioPs//TRqPs//AE0agCeioPs//TRqPs//AE0agCeioPs//TRqPs//AE0agCeioPs//TRqPs//AE0agCeioPs//TRqPs//AE0agCK8tJLieJ1Ee1A2d2ckkY/KprOA21pFCzBii4yKT7P/ANNGqVV2qFyTjuaAGzfdH1qGppvuj61DSYwooopAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAVPF/ql+lQVPF/ql+lNAUtWuNQt44Tp9us7s7B1YkADYxBzg4+YKPxxWZp+o6/LBd/bLUxSEotvmIj7zEFj7AYODzx6EVd8Rz67b6aH8P2lvc3fmAFJ2wAvOSORz071y/9p/FD/oBaZ/38H/xymQ3Y3LzU9ft9Rlji07z7aMnbIqnLDG7+Xy9OtNl1/WIolun0Z1gUPvXLZ4UEMflyATkDjPrjBrF/tP4of9ALTP8Av4P/AI5R/aXxQ/6AWmf9/B/8coDm8jZXxBrIYP8A2HM6ORtADDvjjK9+vzbelWLfWtUnMy/2M67I0KOxZVkYkA9VBAGT2z8p45Fc9/afxQ/6AWmf9/B/8co/tP4of9ALTP8Av4P/AI5QHN5Gw/iDW1Z3OgyhELJs+Y7iOhyFJ56DjHOc0ra7rsQljk0NmdQxWVNxU/OQOApJ4x059sc1jf2n8UP+gFpn/fwf/HKP7T+KH/QC0z/v4P8A45QHN5HcWbyyWUDzrtmaNTIMYw2Of1qauB/tP4of9ALTP+/g/wDjlH9p/FD/AKAWmf8Afwf/ABygObyO+orgf7T+KH/QC0z/AL+D/wCOUf2n8UP+gFpn/fwf/HKA5vI76iuB/tP4of8AQC0z/v4P/jlH9p/FD/oBaZ/38H/xygObyO+orgf7T+KH/QC0z/v4P/jlH9p/FD/oBaZ/38H/AMcoDm8jvqK4H+0/ih/0AtM/7+D/AOOV1WjzazLpcL6tbQQXpB8yOJsqOeO/pigadzUoqDdcf3Fo3XH9xaVxk9FQbrj+4tG64/uLRcCeioN1x/cWjdcf3FouBPRUG64/uLRuuP7i0XAnoqDdcf3Fo3XH9xaLgT0VBuuP7i0brj+4tFwJ6Kg3XH9xaN1x/cWi4E9Zsl1efaXWNXKLMqjMJ5H8WD0x05+vtVvdcf3FpQ0+RlFxQBNUEv8ArPwFT1BL/rPwFDAWDq34Ul7JNFYXEluu+ZYmMa4zlgDgY+tLB1b8KdOZVgkMCq0oU7FY4BbHAP40IDCXVNetLYfadLFw428xFsnO44wFPPAGemWGcDmo4/EGsbpzJoc5Bb90oVhtAUEgnb6+nXtms7+0fiN/0BtO/wC/g/8Ai6P7R+I3/QG07/v4P/i6Lkc/kdPpdze3KzveQJEBIBEFDDcu1Tk7gD1JHTtV+uQsb7x699At5pNglsXAlZZOQvcj5j/Kuo3XH9xaLlJ3J6Kg3XH9xaN1x/cWi4yeioN1x/cWjdcf3FouBPRUG64/uLRuuP7i0XAnoqDdcf3Fo3XH9xaLgT0VBuuP7i0brj+4tFwJ6Kg3XH9xaN1x/cWi4E9FQbrj+4tG64/uLRcCeioN1x/cWjdcf3FouBPRUG64/uLRuuP7i0XAnoqDdcf3Fo3XH9xaLgT0VBuuP7i0brj+4tFwJ6Kg3XH9xaN1x/cWi4E9FQbrj+4tG64/uLRcCeioN1x/cWjdcf3FouA29kmijV4Qx5O4Km44weg+uKfavJJaxvMMSFcsMEfoaTdcf3FqVd20bhg96YDZvuj61DU033R9ahpMYUUUUgCiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKni/wBUv0qCp4v9Uv0poCC+vlshEBDJPLM+yOOPGWOCT1IHQHvVA+K9IEEc3nttcrn92w2A45JxgAZGeaTxVq2j6PpIuNahMts0oUKI953c4+nQ1yknxH8CzBBJYysIySoNoMDP4+w/KmS5JbnXyeJdNFjLdwStcJEUDbFIwWYKBlsDOT0zxTh4j0oL81ztYAllCM2MZz0ByBgjI4yCK5KL4m+C4IRDFbXCRgq20WwxlcYPXtgflTR8SvBCySSi0nDykmRvsoy2eueaBc0e52I8Q6Ubc3H2r92H2E+W2QcZ6Yz05z04psviXRoTiS/jB2b8YJ+XGc9PSuMufiJ4Gu7Z7eW0uCjnJxbgHOMZBz15NJ/wsHwDgj+z5BkMDi0AyG6jrQHNHudinifSnd1ado9jFcuhGcEgn6ZHXpyKv2d7bahAJ7WTzIycZwRz9DzXBP8AEXwI+3dYynacjNoOOvv7mrEPxW8I26lYY7qNSckLbgc9PX2oDmj3O9orhv8Ahb3hf/p9/wC/H/16P+FveF/+n3/vx/8AXoDmj3O5orhv+FveF/8Ap9/78f8A16P+FveF/wDp9/78f/XoDmj3O5orhv8Ahb3hf/p9/wC/H/16P+FveF/+n3/vx/8AXoDmj3O5orhv+FveF/8Ap9/78f8A16P+FveF/wDp9/78f/XoDmj3O5ornfD/AI50bxLNNDp5uN8KhmEkW3gnHWtz7VH7/lQUnfYmoqH7VH7/AJUfao/f8qAJqKh+1R+/5Ufao/f8qAJqKh+1R+/5Ufao/f8AKgCaioftUfv+VH2qP3/KgCaioftUfv8AlR9qj9/yoAmoqH7VH7/lR9qj9/yoAmoqH7VH7/lR9qj9/wAqAJqqPfrHM0RhkyrqpIxjnp3/AE696l+1R+/5VB5Ni03meQu8vv3bed3rQBdqCX/WfgKnqCX/AFn4CkwFg6t+FLczpa2stzICUhRnYKMnAGeKSDq34UXbQpaTNcLuhWNjIMZyuOeO/FCAy4PF2jTlttyVVQuWKHHzAenTGQDnoTjrTx4o0jLB7ryyrqgDqQTlQw4xkZB7+lcxN468FXDBprGRyCCCbUdunelfx54LkmEz2UhkDBg5thnI4BzntRdEc8e50sPinSZo1c3DR7lDBXjYHlQRxjqew6nHFadtcRXdulxA++OQZVsEZH41kQRaJq+lJNBaqsN1GCrCMKwGMD6EDitCzFrYWcVpbqyxQqFQdeBTLLlFQ/ao/f8AKj7VH7/lQBNRUP2qP3/Kj7VH7/lQBNRUP2qP3/Kj7VH7/lQBNRUP2qP3/Kj7VH7/AJUATUVD9qj9/wAqPtUfv+VAE1FQ/ao/f8qPtUfv+VAE1FQ/ao/f8qPtUfv+VAE1FQ/ao/f8qPtUfv8AlQBNRUP2qP3/ACo+1R+/5UATUVD9qj9/yo+1R+/5UATUVD9qj9/yo+1R+/5UATUVD9qj9/yo+1R+/wCVAE1FQ/ao/f8AKj7VH7/lQBNRUP2qP3/Kj7VH7/lQA25u0tTGGR2Mh2rtxyewqSCZZ4VlUEBux6iopXtpl2yx7x7ipogixKI1CoBgADGKAEm+6PrUNTTfdH1qGkxhRRRSAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAqeL/AFS/SoKni/1S/SmgEl8oqFm2EN0D4we/9Krp/Zkm/Z9lby/v42nb9fSodb0u31W3iS4naBYZC6upAKttZQQfbdn8Kx/+EZsXt2tpdWXymDLhFRWKswZgSc55A7dM+tMR0n2S2/594v8AvgUfZLb/AJ94v++BUVtNBBbRRPexytGgUyM4yxA6mpftdt/z8Rf99igA+yW3/PvF/wB8Cj7Jbf8APvF/3wKPtdt/z8Rf99ij7Xbf8/EX/fYoAPslt/z7xf8AfAo+yW3/AD7xf98Cj7Xbf8/EX/fYo+123/PxF/32KAD7Jbf8+8X/AHwKPslt/wA+8X/fAo+123/PxF/32KPtdt/z8Rf99igA+yW3/PvF/wB8Cj7Jbf8APvF/3wKPtdt/z8Rf99ij7Xbf8/EX/fYoAPslt/z7xf8AfAo+yW3/AD7xf98Cj7Xbf8/EX/fYo+123/PxF/32KAD7Jbf8+8X/AHwKPslt/wA+8X/fApRdW7MFWeMk9AHFSZHqKAGJDFHny4kTPXaoGafgegoyPUUZHqKADA9BRgegoyPUUZHqKADA9BRgegoyPUUZHqKADA9BRgegoyPUUZHqKADA9BRgegoyPUUZHqKADA9BRgegoyPUUZHqKADA9BRgegoyPUUZHqKADA9BRgegoyPUUZHqKADA9BTBNDkASR5LbR8w6+n1p+R6is7+yg0xlacFmfJwgHGQQBzx90c0AaVQS/6z8BU9QS/6z8BSYCwdW/CpT71FB1b8KW6gW6tZbdywSVGRipwQCMcUICGM6dKgeM2zqTtDLtIJzjH5mpvstv8A88I/++BXOt4a0+aRZbm/jeQEZ8sCNcApgYB44Tr7+wqxpmiRWl6JpNYmvGDblSSXPOMdM8/59KYjeCqAAFAA7YowPQUZHqKMj1FAwwPQUYHoKMj1FGR6igAwPQUYHoKMj1FGR6igAwPQUYHoKMj1FGR6igAwPQUYHoKMj1FGR6igAwPQUYHoKMj1FGR6igAwPQUYHoKMj1FGR6igAwPQUYHoKMj1FGR6igAwPQUYHoKMj1FGR6igAwPQUYHoKMj1FGR6igAwPQUYHoKMj1FGR6igAwPQUYHoKMj1FGR6igAwPQUYHoKMj1FGR6igAwPQUYHoKMj1FGR6igAwPQUYHoKMj1FGR6igBDtUFmwAOST2pVIZQykEHkEd6iuYhcW0kJfaHXGaW2hFtbRwhtwQYzQAs33R9ahqab7o+tQ0mMKKKKQBRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFTxf6pfpUFTxf6paaAzfEHh2w8TaeLHURIYlkEg8t9pBGf8a5v/hUPhf8A6ff+/wD/APWruaKZLinucN/wqHwv/wBPv/f/AP8ArUf8Kh8L/wDT7/3/AP8A61dzRSsLlj2OG/4VD4X/AOn3/v8A/wD1qP8AhUPhf/p9/wC//wD9au5oosHLHscN/wAKh8L/APT7/wB//wD61H/CofC//T7/AN//AP61dzRRYOWPY4b/AIVD4X/6ff8Av/8A/Wo/4VD4X/6ff+//AP8AWruaKLByx7HDf8Kh8L/9Pv8A3/8A/rUf8Kh8L/8AT7/3/wD/AK1dzRRYOWPY4b/hUPhf/p9/7/8A/wBaj/hUPhf/AKff+/8A/wDWruaKLByx7HF2vwp8NWl1Fcxi7LwuHXM/GQcjtXXfZo/f86mop2GklsQ/ZY/f86Pssfv+dTUUrDIfssfv+dH2WP3/ADqaiiwEP2WP3/Oj7LH7/nU1FFgIfssfv+dH2WP3/OpqKLAQ/ZY/f86Pssfv+dTUUWAh+yx+/wCdH2WP3/OpqKLAQ/ZY/f8AOj7LH7/nU1FFgIfssfv+dH2WP3/OpqKLAQ/ZY/f86BbRgg88e9TUUwCoJf8AWfgKnqCX/WfgKTAWDq34U6eFLiCSCQEpIpVsHHBGDTYerfhU1CA43/hVvhz/AKe/+/3/ANap7L4caBYXsN3CLkyQuHXdNxkfhXV0UWRPJHsQ/ZY/f86Pssfv+dTUU7FEP2WP3/Oj7LH7/nU1FKwEP2WP3/Oj7LH7/nU1FFgIfssfv+dH2WP3/OpqKLAQ/ZY/f86Pssfv+dTUUWAh+yx+/wCdH2WP3/OpqKLAQ/ZY/f8AOj7LH7/nU1FFgIfssfv+dH2WP3/OpqKLAQ/ZY/f86Pssfv8AnU1FFgIfssfv+dH2WP3/ADqaiiwEP2WP3/Oj7LH7/nU1FFgIfssfv+dH2WP3/OpqKLAQ/ZY/f86Pssfv+dTUUWAh+yx+/wCdH2WP3/OpqKLAQ/ZY/f8AOj7LH7/nU1FFgIfssfv+dSqoVQo6ClopgRzfdH1qGpZvuj61FSYwooopAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUquy/dP50lOSMuM5wKYC+a/+z+VHmv8A7P5UvkH+/wDpR5B/v/pQITzX/wBn8qPNf/Z/Kl8g/wB/9KPIP9/9KAE81/8AZ/KjzX/2fypfIP8Af/SjyD/f/SgBPNf/AGfyo81/9n8qXyD/AH/0o8g/3/0oATzX/wBn8qPNf/Z/Kl8g/wB/9KPIP9/9KAE81/8AZ/KjzX/2fypfIP8Af/SjyD/f/SgBPNf/AGfyo81/9n8qXyD/AH/0o8g/3/0oATzX/wBn8qPNf/Z/Kl8g/wB/9KPIP9/9KAE81/8AZ/KjzX/2fypfIP8Af/SjyD/f/SgBPNf/AGfyo81/9n8qXyD/AH/0o8g/3/0oATzX/wBn8qPNf/Z/Kl8g/wB/9KPIP9/9KAE81/8AZ/KjzX/2fypfIP8Af/SjyD/f/SgBPNf/AGfyo81/9n8qXyD/AH/0o8g/3/0oATzX/wBn8qPNf/Z/Kl8g/wB/9KPIP9/9KAE81/8AZ/KjzX/2fypfIP8Af/SjyD/f/SgBPNf/AGfyo81/9n8qXyD/AH/0o8g/3/0oATzX/wBn8qPNf/Z/Kl8g/wB/9KPIP9/9KAE81/UflTOpyTkmpPIP9/8ASoyCpIPUUDAEg5Bwaf5r/wCz+VNVS5wPzp/kH+/+lACea/8As/lR5r/7P5UvkH+/+lHkH+/+lAhPNf8A2fyo81/9n8qXyD/f/SjyD/f/AEoATzX/ANn8qPNf/Z/Kl8g/3/0o8g/3/wBKAE81/wDZ/KjzX/2fypfIP9/9KPIP9/8ASgBPNf8A2fyo81/9n8qXyD/f/SjyD/f/AEoATzX/ANn8qPNf/Z/Kl8g/3/0o8g/3/wBKAE81/wDZ/KjzX/2fypfIP9/9KPIP9/8ASgBPNf8A2fyo81/9n8qXyD/f/SjyD/f/AEoATzX/ANn8qPNf/Z/Kl8g/3/0o8g/3/wBKAE81/wDZ/KjzX/2fypfIP9/9KPIP9/8ASgBPNf8A2fyo81/9n8qXyD/f/SjyD/f/AEoATzX/ANn8qPNf/Z/Kl8g/3/0o8g/3/wBKAE81/wDZ/KjzX/2fypfIP9/9KPIP9/8ASgBPNf8A2fyo81/9n8qXyD/f/SjyD/f/AEoATzX/ANn8qPNf/Z/Kl8g/3/0o8g/3/wBKAE81/wDZ/KjzX/2fypfIP9/9KPIP9/8ASgBPNf8A2fyo81/9n8qXyD/f/SjyD/f/AEoAYWLHJNJTnQpjJyD3ptAwooopAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAVPF/qlqCp4v9Uv0poB9FQXUDToqq7IQ6klWK5GeRx7VVNneZf9/klGCHzGGwknHHfqPpimI0aKzVsbwv+8uCR5RXIkYfNk/Nj8R9KclndI0mJyVaDYu5ySHx1oA0KKoWlncxPE09wzhVbcu8kE54/Qn9KhisNQRo993u2sxPznvjHHfHNAGrRWWllqAiKtcjPPR2Oenf3wfpmnxWd8s8bm6/dqRuj3E8ZbjPfqB74oA0aKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACoJf9Z+AqeoJf8AWfgKTAWDq34VNUMHVvwqVlDKVOcEY4OKEAtFZv2G7WNFE5YBV3gysNx5z83UdR+VJJZX7F8XOQ0gZR5jDauT8v6imBp0VT+yTLFcCOZhI7boyzkhcYwPpnP51A9jfZOy5P3MBi5/u4xj68560AadFZ01rfyuxWcRBuRhidp446exP40sFpepdJJNceag3Z+YjqTjjpQBoUVmwWN4uPNumOJdxw5OV9Pzx+tLJZ37SyMl5hGLFU6YzjHP+cZoA0aKzUsr4SRk3WIwfmj3E8ZJxnr0xzSpZXaGLF0dqkFwWLbvmyeT7UAaNFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUARTfdH1qKppvuj61DSYwooopAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAVPF/ql+lQVPF/ql+lNAPooopiCikJCgkkAD1rmtW8daXp0rwRLJdzISGVOFBHYk/0zQB01FcdL41uftnlRWkXltbmZWZiSf3e8frxXMWXxpn3D7doyFT1MEpBH4Ef1qYzUr2FJ8trnrFFc9oHjjQvEZEVndeXcH/l3mGx/wAOx/CugqgTuLRRRQMKKztX17StBjjk1S9jtVlJVC+fmI69BU66lZtZw3a3CGC4AMTjo+RkY/CgC1RVV9TsUVWa7iw+duGBzg4OPx4qaOeKVnWORXaMgOAclSQDg+nBB/GgCSiqk+p2NtN5M91HHJ8vys2D82cfyNWIpo5kLxOHUErkHIyDgj8xQA+imu6xoWcgKOpNNNxCpAMigk4AJ70ASUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABUEv+s/AVPUEv+s/AUmAsHVvwqaoYOrfhU1CAKKKKYBRRRQAUVzuvXHiFL8x6Xbs0H2ZsMu3/AFhzzz3GBgY53H0rU0VrxtItjqAYXWz95uABJz1OOOmKBXL1FFFAwooooAKKKKACiiigAooooASlrl7+01tNQkktJL9opLqPYFmQrGg5diD1BztC+2a6igQUUUUDCiiigAooooAKKKKACiiq9955sLgWv/Hx5TeVyB82Djr70AWKK5PQofFEeq2x1FpjarEyvvdDk5bBIBJz931+vausoEncKKKKBhRRRQBHN90fWoamm+6PrUNJjCiiikAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABU8X+qX6VBU8X+qX6U0A+mSypBC80rBY0UszHsB1p9c14r1SS3MVpBIUc/vHZTzjsKmpNQjzMcYuTsjivFHi251yZoIGaGxU/KgODJ7t/hVK8P2+yTUhzKpEV0P9rHyv/wID8wfWtG80y11PLxbLS7P4RSn3/un9PpWj4S8HXcjTzakrQ2zqYmhPWX39gCAQaiE1PVHLyVadX3upm25822sZ+4tLiFvqqvj9GFeXL90fSvpq10XTLKBYILKFUXJAK7uoweT6isjWPh/4b1eFlbTo7WUj5ZrYCNgfoOD+Iqows35m1ROdvI+flZkYMjFWU5BBwQa9c+HXxCk1CWPRNZl3XJGLe4b/lr/ALLf7Xoe/wBevnninwve+FdUNpc/vIny0E4GBIv9CO4rHR3ikWSNijoQysDggjoao503Fn1LRWF4N13/AISLwza37kefjy5wP768H8+v41u1R0p3MDxV4QsvFsNtFeTzw/ZmZlMJHORg5yD6VbXQbZNJsdNSWVY7EJ5TfKWO1SozkEdD6VH4gu9RtYoTp6MxZjv2x78elST3Wpx6ZZzQ24luGwZoyuDjYScehyABn1xUKScnErlsuYhbwrpxwY/MjcHO8EEk5z0II6+3c96u2Wlw2NxNPE8rPPzIXbIY5Jzjt1I47VmJqmus640wlSUwGXbuAX94M54OcYzioP7T8RGOYGz/AH6ldqJEQpHGSCRj17/hViNa/wBFh1C4Wd554mAUMsZXDhSWAIIORk/oKk03SrbSYpIrXzBG779ryF9pwBgZ7cVBqd7f2um28tram4ndkEiqp4GMnAxkZxgZ6Z56U7RpdTmgmOpxqjiYrHtGMqO/0znHqMUC6l+SMSxlG6GoBp8CkFd6nIPDHqKluDIsDmL7+Pl4zzVUTXu5SYzjcAw28gfn9PzoGX6KKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAqCX/WfgKnqCX/WfgKTAWDq34Ul7dJY2NxdyAlIImkYDqQoyf5UsHVvwqp4h/wCRa1T/AK85f/QDQDPMn+NGoFyU0e2C5+UNKxOPem/8Ln1P/oEWn/fxq84HQUUrnNzy7no//C59T/6BFp/38aj/AIXPqf8A0CLT/v41ecUUXFzy7no//C59T/6BFp/38aj/AIXPqf8A0CLT/v41ecUUXDnl3PR/+Fz6n/0CLT/v41H/AAufU/8AoEWn/fxq84oouHPLuej/APC59T/6BFp/38auh8F/EmbxLrX9mXenxwM8bPG8TkjjqCD7V4vXY/Cv/ke7b/rjL/6DRcqM5XPdq5/xr4lfwroJv4oFnleVYo1c4UE5OTj2BroK4L4w/wDIoQ/9fqf+gvVG0nZHL/8AC5dd/wCgdp/5P/8AFUf8Ll13/oH6f+T/APxVee0VNzn55dz0L/hcuu/9A/T/AMn/APiqP+Fy67/0D9P/ACf/AOKrz2ii4c8u56F/wuXXf+gdp/5P/wDFUf8AC5dd/wCgfp/5P/8AFV57RRcOeXc9C/4XLrv/AED9P/J//iqP+Fy67/0DtP8Ayf8A+Krz2ii4c8u56F/wuXXf+gfp/wCT/wDxVd34D8XTeLdNuJrm2SCe3kCMIydrAjIIzyK8Cr1v4Lf8g3Vf+u6f+g00XCTbPTKwdf8AEEulXEcEEKOzJvJfOMZx2+lb1cV4y/5CsP8A1wH8zTNnsO/4TO//AOfe3/Jv8aP+Ezv/APn3t/yb/GueopGd2dD/AMJnf/8APvb/AJN/jR/wmd//AM+9v+Tf41z1FAXZ0P8Awmd//wA+9v8Ak3+NH/CZ3/8Az72/5N/jXPUUBdnQ/wDCZ3//AD72/wCTf40f8Jnf/wDPvb/k3+Nc9RQF2dD/AMJnf/8APvb/AJN/jXU6bef2hp8N1s2eYuSuehzivNa9A8N/8gC1/wB0/wDoRplRZoTfdH1qGppvuj61DSZoFFFFIAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACp4v9Uv0qCp4v9Uv0poB9efeIJTNrlySfuttH4DFegV57rsZj1u7B7ybvz5rkxfwI2ofEVrSD7VeQwf89HC/ma9JjjWKNY0UKqgAAdhXnGnzi21G3mbokik/TNekg5GR0pYS1mOvuhaKKK7TnOU+JOkxan4NvHZAZbMefE3cEdfzGa8Dr6E+IF9HYeCdSd2AMsXkoPVm4/qT+FfPdSzCpuer/Ba7ZrbVbIn5UeOVfxBB/wDQRXqFeV/BW3bOrXOPl/dRg+/zE/0r1SqRpD4Spf6pYaWiPfXUdurnClz1NSi6t2tVuRMnkOAVkLYUg9OfxrM8ReG7fxFFAk88sPkMSpjxzn6/Sp30O2l0e30uSSUwQqq8NgvgYGf5/UCga5r+RaF9aNI0YuYi6vsK7xkN6fXg/lToLq3ugxt5klCHa2xgcGs1/DNlIFLSTmQOZPM3/MWJyD+BJ46cmr9laGygEAneWNAFjDgfIoGAOAM/jQUSzzxW0RlnkWOMYyzHAGeKWOWOUMY3VgrFTtOcEdRUd5apfWkttIWCSrtJXrVfStJh0iGSKCSR1kkLneRwfwH5nqTyaAL9RG4hD7DKgbONpPNS1BJaRyvvJYNuDZB9P8/rQBPRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFQS/wCs/AVPUEv+s/AUmAsHVvwqp4h/5FrVP+vOX/0A1bg6t+FVPEP/ACLWqf8AXnL/AOgGgTPmkdBRQOgopHIFFFFABRRRQAUUUUAFdj8Kv+R7tv8ArjL/AOg1x1dj8Kv+R7tv+uMv/oNBUfiR7tXBfGH/AJFCH/r9T/0F672uC+MP/IoQ/wDX6n/oL1R0T+FnitFFFScoUUUUAFFFFABRRRQAV638Fv8AkG6r/wBd0/8AQTXklet/Bb/kG6r/ANd0/wDQTQi6fxHplcV4y/5CsP8A1wH8zXa1xXjL/kKw/wDXAfzNUby2MCiiikZhRRRQAUUUUAFFFFABXoHhv/kAWv8Aun/0I15/XoHhv/kAWv8Aun/0I0FR3NCb7o+tQ1NN90fWoaGahRRRSAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAqeL/VL9KgqeL/VL9KaAfXI+MLErPFeqPlcbH9iOn6fyrrqgvLWK9tXt5lyjjB9ves6sOeDRUJcsrnmldX4f8RR+SlnfPsZeEkboR6E1galps+mXJhmGVP3HA4YVTwScAZJrzITlSkdkoqaPUVYMAVIIPQiquo6nY6TatdX91FbQr1aRsZ+nqfpXhfirXb+DxJcQWN/cW8dqq24EMzKCVHzHg/3t1c5cXVzeSeZdXEs7/wB6Vyx/WvWT0PLlUSdkdT498bN4qvEgtlaPTrdiY1bhpG/vEfyFcjRXf/DrwJLq11FrGpxFLCJt0Ubj/XsOnH90frQZayZ3/wAO9DfQ/CVukybbi5JnlB6gt0H4ACuppKWqOlKysc74v1PVtMgtm0qIyM7sJMRGTAxx9Kt/bb7+xbGd0Mc0qr57eSz+XlSSdg564Htmr93f2dgqtd3McAc4Uu2M1ItxC8SSrKhSQZRs8Nxnj8OaV1ewzCXWNajJkm0gvGqZ2Rbt5O1COox1ZuM9vatLS765v42knsjaqMBQzEluMnjA45//AFVaS6t5GCpPGzN0AYEnr/gfyNS0wKupy3MOnTy2ihp0Xcild24jtioNHvLm8juGuFICTssZaFoiVGOSG984PcYrRqGC6t7oMbeeOUI21tjA7T6HFAE1UnnulmIWPcgcDIQ9Ku1GZ4g+wyJu6Y3DNAElFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAVBL/rPwFT1BL/rPwFJgLB1b8KqeIf+Ra1T/rzl/wDQDVuDq34VBrUEt1od/bwrvlmtpERc4yxUgCgGfMo6CiuoHw28XY/5BB/7/R//ABVH/CtvF3/QIP8A3+j/APiqRycr7HL0V1H/AArbxd/0CD/3+j/+Ko/4Vt4u/wCgQf8Av9H/APFUByvscvRXUf8ACtvF3/QIP/f6P/4qj/hW3i7/AKBB/wC/0f8A8VQHK+xy9FdR/wAK28Xf9Ag/9/o//iqP+FbeLv8AoEH/AL/R/wDxVAcr7HL12Pwq/wCR7tv+uMv/AKDVb/hW3i7/AKBB/wC/0f8A8VXS/D/wZ4g0XxbBfajp5gt1ikUv5iNgkccA5oKjF3R61XBfGH/kUIf+v1P/AEF672uR+JWi6jr3huK00y3NxMt0rlQwX5QrDPJHqKo3lseDUV1H/CtvF3/QIP8A3+j/APiqP+FbeLv+gQf+/wBH/wDFVJzcr7HL0V1H/CtvF3/QIP8A3+j/APiqP+FbeLv+gQf+/wBH/wDFUByvscvRXUf8K28Xf9Ag/wDf6P8A+Ko/4Vt4u/6BB/7/AEf/AMVQHK+xy9FdR/wrbxd/0CD/AN/o/wD4qj/hW3i7/oEH/v8AR/8AxVAcr7HL1638Fv8AkG6r/wBd0/8AQTXGf8K28Xf9Ag/9/o//AIqvRfhf4e1Xw/Y6hHqlqbd5pVZAXVsgDB6E0IuCakd1XFeMv+QrD/1wH8zXa1y/ibSL6/1COW1g8xFiCk7gOcn1NUbS2OTorU/4RrV/+fM/99r/AI0f8I1q/wDz5n/vtf8AGkRZmXRWp/wjWr/8+Z/77X/Gj/hGtX/58z/32v8AjQFmZdFan/CNav8A8+Z/77X/ABo/4RrV/wDnzP8A32v+NAWZl0Vqf8I1q/8Az5n/AL7X/Gj/AIRrV/8AnzP/AH2v+NAWZl16B4b/AOQBa/7p/wDQjXJ/8I1q/wDz5n/vtf8AGux0S2ltNHt4J02SIDuXOccmmVFalub7o+tQ1NN90fWoaTNAooopAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAVPF/ql+lQVPF/ql+lNAPooopiIbm1gvITDcRrIh7Guel8J+RcrcWkodUO4RSdyOQM/XFdPRWcqcZ6tFKTWx4Hd/Dvxh9pkkk0syu7FmdJkIJJyT1qWz+Fviq6cCS0itV7tNMvH4Lk17vRV2MfZo4Dw58JtM0yRLnVpf7RmXkR7dsSn6dW/Hj2rvlUIoVQAAMAAdKWimWklsFFFFAzI1/QIteihSSd4fJYkFQDnNTNpC/2bbWaXDobYAJIACfulTkHjoTWjRUqKTuO7tYyrHQLbT5leCSTaJDLtbByxBXr16N09vrWrRRVCCq9raJa+cVYs00pkdm6knoPwAA/CrFFABVaSySSXzS7BtwYYxxj8Ks0UAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAVBL/rPwFT1BL/rPwFJgLB1b8KmqGDq34VNQgEopaKYCVVu9Qhs5FSTJ3KW+XkjGP8AP4VbpjRRuSWjVs9cgHNAFNtViNu0sSlsMF2udu7PTHr0qL+2UGC0YAJz9/J2884x1GDkdq0WhiYYaNCOuCopPIhJz5SZznO0dfWgBlpcLdW6yqCucgqeoI6ipqRVVFCqoUDoAMCnUAJRS0UAFJS0UAJRS0UAJWW2uQxx7pInDEMUUA8gd84/xrVphijbG5FOOmRQBSm1VI1jZE3iQE4LYYYODkemeCajbWkTO6IcDna+cHOPy4JB7gdK0PIi4/dJ8owPlHA9KPs8H/PGPpj7o6UAOUhlDA5BGRS0tFACUtFFABRRRQAUUUUAU77UFsSoaJ33IzDYM8jHH45psGqwXMoijDlyM9OAPX86ulQeoB7U1Yo1JKooJ6kDrQBnLrIb/lmgH97zRtPXBBxyPlOT296kg1UXAcRwMZFj3hM/ePoD+I6+tXBbwgYEMYHIxtHfrSpFHGcoirxjgYoAVSSoLDaSOR6U6iigAooooAjm+6PrUNTTfdH1qGkxhRRRSAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAqeL/VL9KgqeL/VimgH0UUUxBRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAVBL/rPwFT1BL/rD9BSYCwdW/CpWAZSp6EYqKHq34VNTQFOSykJHlXDxhVUAdeh70fZbhoHR5g7N0z0A/xq5RQBQNjNn5ZgOc55z35/X9Kc1pclYgtxjYPz6/0PX2q7RQBTjtblGBa6LKfvD8MUiWdxGm0XTHjv61dooAz5La+ICC5yDwxxjA9f6U+W0nkCgTfdUjdyCef8Ku0UAUns52bct0wPBxjgkDFT28UsanzZTIx/SpqKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKAI5vuj61DUs33R9aipMYUUUUgCiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKUEr0JFJRQA7zH/vH8hR5j/3j+QptFMB3mP/AHj+Qo8x/wC8fyFNooAd5j/3j+Qo8x/7x/IU2igB3mP/AHj+Qo8x/wC8fyFNooAd5j/3j+Qo8x/7x/IU2igB3mP/AHj+Qo8x/wC8fyFNooAd5j/3j+Qo8x/7x/IU2igB3mP/AHj+Qo8x/wC8fyFNooAd5j/3j+Qo8x/7x/IU2igB3mP/AHj+Qo8x/wC8fyFNooAd5j/3j+Qo8x/7x/IU2igB3mP/AHj+Qo8x/wC8fyFNooAd5j/3j+Qo8x/7x/IU2igB3mP/AHj+Qo8x/wC8fyFNooAd5j/3j+Qo8x/7x/IU2igB3mP/AHj+Qo8x/wC8fyFNooAd5j/3j+Qo8x/7x/IU2igB29/7xptFFIA6HIODTvMf+8fyFNooAd5j/wB4/kKPMf8AvH8hTaKYDvMf+8fyFHmP/eP5Cm0UAO8x/wC8fyFHmP8A3j+QptFADvMf+8fyFHmP/eP5Cm0UAO8x/wC8fyFHmP8A3j+QptFADvMf+8fyFHmP/eP5Cm0UAO8x/wC8fyFHmP8A3j+QptFADvMf+8fyFHmP/eP5Cm0UAO8x/wC8fyFHmP8A3j+QptFADvMf+8fyFHmP/eP5Cm0UAO8x/wC8fyFHmP8A3j+QptFADvMf+8fyFHmP/eP5Cm0UAO8x/wC8fyFHmP8A3j+QptFADvMf+8fyFHmP/eP5Cm0UAO8x/wC8fyFHmP8A3j+QptFADvMf+8fyFHmP/eP5Cm0UAO8x/wC8fyFHmP8A3j+QptFAASSck5NFFFIAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKAP/2Q==" alt="Legal Intelligence Dashboard — SOLIT.LEGAL" style="width:100%;display:block;" />
+          <div style="position:absolute;bottom:0;left:0;right:0;height:40%;background:linear-gradient(to top,rgba(26,58,42,0.4),transparent);pointer-events:none;"></div>
+        </div>
+        <div style="margin-top:1rem;font-size:0.7rem;letter-spacing:0.08em;text-transform:uppercase;color:rgba(245,243,239,0.35);">Legal Intelligence Dashboard · sample data</div>
+      </div>
+      <div class="reveal reveal-delay-1">
+        <div style="font-size:0.7rem;letter-spacing:0.15em;text-transform:uppercase;color:rgba(245,243,239,0.5);font-weight:500;margin-bottom:0.75rem;">02 · Legal Intelligence</div>
+        <h2 style="font-family:var(--serif);font-size:clamp(2rem,3.5vw,3rem);font-weight:300;color:var(--paper);line-height:1.1;margin-bottom:2rem;">Full transparency on<br><span style="font-style:italic;color:var(--gold);">what Legal does</span></h2>
+        <p style="font-size:1rem;color:rgba(245,243,239,0.7);line-height:1.75;margin-bottom:1.5rem;">Transparency is the cornerstone of our General Counsel as a Service model. We believe that if you can't measure what Legal does, you can't improve it — and you certainly can't demonstrate its value to the business.</p>
+        <p style="font-size:1rem;color:rgba(245,243,239,0.7);line-height:1.75;margin-bottom:1.5rem;">That's why we report on what work was done, what OKRs are pending, how budget is spent and managed, and what workload the team encounters. This data-driven approach enables us to report quarterly on the trends we see in legal work — turning legal operations into a strategic asset.</p>
+        <p style="font-size:1rem;color:rgba(245,243,239,0.7);line-height:1.75;">No black box. No surprises. Just clear, actionable intelligence on your legal function.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pillar 3: Strategic business partners -->
+  <section style="padding:7rem 4rem;max-width:1280px;margin:0 auto;">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:6rem;align-items:start;">
+      <div class="reveal">
+        <div class="section-label">03 · Our mindset</div>
+        <h2 class="section-title">Strategic legal <em>business partners</em></h2>
+        <p style="font-size:1rem;color:var(--muted);line-height:1.75;margin-top:1.75rem;margin-bottom:1.5rem;">Traditional legal advice often aims to close every theoretical risk, no matter how remote. The result? Deals stall, opportunities are missed, and legal becomes the department that says "no". We take a fundamentally different approach.</p>
+        <p style="font-size:1rem;color:var(--muted);line-height:1.75;">We align with your organisation's risk appetite and commercial objectives. We focus on the risks that actually matter, provide clear recommendations on how to manage them, and help you make informed decisions — fast. Our job is to enable your business, not to protect it from everything including growth.</p>
+      </div>
+      <div class="reveal reveal-delay-1">
+        <div style="background:var(--accent);padding:3rem;">
+          <div style="font-size:0.7rem;letter-spacing:0.12em;text-transform:uppercase;color:rgba(245,243,239,0.45);margin-bottom:1.5rem;">The difference</div>
+          <div style="display:grid;gap:2rem;">
+            <div>
+              <div style="font-family:var(--serif);font-size:1.1rem;color:var(--paper);margin-bottom:0.5rem;">Traditional legal advice</div>
+              <p style="font-size:0.87rem;color:rgba(245,243,239,0.5);line-height:1.65;">Aims to close every risk. Cautious by default. Legal as a cost centre and gatekeeper.</p>
+            </div>
+            <div style="height:1px;background:rgba(245,243,239,0.08);"></div>
+            <div>
+              <div style="font-family:var(--serif);font-size:1.1rem;color:var(--gold);margin-bottom:0.5rem;">SOLIT.LEGAL</div>
+              <p style="font-size:0.87rem;color:rgba(245,243,239,0.7);line-height:1.65;">Focus on risks that matter. Align with your risk appetite. Legal as a commercial enabler and strategic partner. We help you make informed decisions — not perfect ones.</p>
+            </div>
+          </div>
+        </div>
+        <div style="margin-top:1px;background:var(--paper);border:1px solid var(--rule);padding:2.5rem;">
+          <div style="font-family:var(--serif);font-size:1.6rem;font-weight:300;color:var(--ink);line-height:1.3;font-style:italic;">"Our job is to enable your business, not to protect it from everything — including growth."</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta-banner">
+    <div class="cta-banner-inner">
+      <div class="cta-eyebrow">Experience the difference</div>
+      <h2 class="cta-title">Ready to work with<br><em>a different kind of legal partner?</em></h2>
+      <p class="cta-sub">Let's discuss how our approach can support your technology company.</p>
+      <div class="cta-actions">
+        <button class="btn-gold" onclick="navigate('contact')">Contact us</button>
+        <button class="btn-outline" onclick="navigate('services')">Explore services</button>
+      </div>
+    </div>
+  </section>
+
+</div><!-- /difference -->
+
 <!-- ═══════════════════════════════════ CONTACT ═══════════════════════════════════ -->
 <div class="page" id="page-contact">
   <div class="page-header">
@@ -1118,13 +1403,13 @@
 
     <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--rule);" class="reveal reveal-delay-1">
 
-      <a href="/cdn-cgi/l/email-protection#d2bab7bebebd92a1bdbebba6fcbeb7b5b3be" style="background:var(--paper);padding:3rem 2.5rem;text-decoration:none;display:flex;flex-direction:column;gap:1.25rem;transition:background 0.3s;">
+      <a href="mailto:hello@solit.legal" style="background:var(--paper);padding:3rem 2.5rem;text-decoration:none;display:flex;flex-direction:column;gap:1.25rem;transition:background 0.3s;">
         <div style="width:2.75rem;height:2.75rem;background:var(--accent);display:flex;align-items:center;justify-content:center;border-radius:2px;color:var(--paper);">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75"/></svg>
         </div>
         <div>
           <div style="font-size:0.7rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--gold);margin-bottom:0.4rem;font-weight:500;">Email</div>
-          <div style="font-size:1.05rem;color:var(--ink);font-weight:400;"><span class="__cf_email__" data-cfemail="08606d646467487b6764617c26646d6f6964">[email&#160;protected]</span></div>
+          <div style="font-size:1.05rem;color:var(--ink);font-weight:400;">hello@solit.legal</div>
         </div>
       </a>
 
@@ -1173,8 +1458,12 @@
 <footer>
   <div class="footer-grid">
     <div>
-      <span class="footer-logo" onclick="navigate('home')">SOLIT<span>.</span>LEGAL</span>
+      <div style="display:flex;align-items:center;gap:1rem;cursor:pointer;" onclick="navigate('home')">
+        <svg width="36" height="36" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><rect width="100" height="100" rx="8" fill="rgba(245,243,239,0.08)" stroke="rgba(245,243,239,0.12)" stroke-width="2"/><text font-family="'Cormorant Garamond',Georgia,serif" font-size="52" font-weight="600" fill="#f5f3ef" text-anchor="middle" dominant-baseline="central" x="39" y="50">S</text><text font-family="'Cormorant Garamond',Georgia,serif" font-size="52" font-weight="600" fill="#b8965a" text-anchor="middle" dominant-baseline="central" x="61" y="50">.</text></svg>
+        <span class="footer-logo" onclick="navigate('home')"><span class="footer-logo-text">SOLIT<span>.</span>LEGAL</span></span>
+      </div>
       <p class="footer-vat">SOLIT.LEGAL BV · BE0735.409.755</p>
+      <p style="font-size:0.7rem;color:rgba(245,243,239,0.25);margin-top:0.75rem;line-height:1.6;letter-spacing:0.05em;">Ten Hoflaan 26<br>B-2980 Zoersel<br>Belgium</p>
     </div>
     <div>
       <div class="footer-heading">Services</div>
@@ -1190,6 +1479,7 @@
       <div class="footer-heading">Company</div>
       <ul class="footer-links">
         <li><a onclick="navigate('about')">About</a></li>
+        <li><a onclick="navigate('difference')">Why us</a></li>
         <li><a onclick="navigate('about')">Our approach</a></li>
         <li><a onclick="navigate('pricing')">Pricing</a></li>
         <li><a onclick="navigate('contact')">Contact</a></li>
@@ -1198,7 +1488,7 @@
     <div>
       <div class="footer-heading">Contact</div>
       <ul class="footer-links">
-        <li><a href="/cdn-cgi/l/email-protection#355d5059595a75465a595c411b5950525459"><span class="__cf_email__" data-cfemail="5b333e3737341b283437322f75373e3c3a37">[email&#160;protected]</span></a></li>
+        <li><a href="mailto:hello@solit.legal">hello@solit.legal</a></li>
         <li><a href="tel:+32498489623">+32 498 48 96 23</a></li>
         <li><a href="https://www.linkedin.com/company/solit-legal" target="_blank">LinkedIn</a></li>
       </ul>
@@ -1219,67 +1509,283 @@
     <div class="page-header-inner">
       <div class="section-label">Legal</div>
       <h1>Privacy <em>Policy</em></h1>
-      <p>How we collect, use and protect your personal data. Last updated: 10 November 2022.</p>
+      <p>How we collect, use and protect your personal data. Last updated: April 17th 2026.</p>
     </div>
   </div>
   <div style="max-width:800px;margin:0 auto;padding:5rem 4rem 7rem;">
 
     <div style="background:var(--paper);border:1px solid var(--rule);padding:2rem 2.5rem;margin-bottom:3rem;">
       <div style="font-size:0.7rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--gold);margin-bottom:0.75rem;">Data Controller</div>
-      <p style="font-size:0.9rem;color:var(--muted);line-height:1.7;margin:0;">SOLIT.LEGAL BV · BE 0735.409.755 · Ten Hoflaan 26, 2980 Zoersel, Belgium · <a href="/cdn-cgi/l/email-protection#8de5e8e1e1e2cdfee2e1e4f9a3e1e8eaece1" style="color:var(--accent);"><span class="__cf_email__" data-cfemail="6008050c0c0f20130f0c09144e0c0507010c">[email&#160;protected]</span></a></p>
+      <p style="font-size:0.9rem;color:var(--muted);line-height:1.7;margin:0;">SOLIT.LEGAL NV &middot; BE 0735.409.755 &middot; Ten Hoflaan 26, 2980 Zoersel (Belgium) RPR Antwerp &middot; <a href="mailto:hello@solit.legal" style="color:var(--accent);">hello@solit.legal</a></p>
     </div>
 
     <div style="font-size:0.95rem;color:var(--muted);line-height:1.8;">
 
-      <h2 style="font-family:var(--serif);font-size:1.5rem;font-weight:300;color:var(--ink);margin:2.5rem 0 1rem;">Our privacy mindset</h2>
-      <p>We only process your personal data in compliance with the GDPR and applicable data protection legislation. This privacy policy applies to personal data processed via our website and in contractual relationships with our clients. SOLIT.LEGAL is the data controller, meaning we determine the purposes and means of processing.</p>
+      <p>At SOLIT.LEGAL, we are committed to safeguarding your personal data and respecting your privacy. We strive to offer transparency, respect, and control regarding how your personal information is handled.</p>
 
-      <h2 style="font-family:var(--serif);font-size:1.5rem;font-weight:300;color:var(--ink);margin:2.5rem 0 1rem;">What personal data do we collect?</h2>
-      <p style="margin-bottom:1rem;">We distinguish between data collected through our website and data collected when working with you as a client. All personal data we collect is necessary to provide our services or to ensure our website functions properly.</p>
-      <p style="font-weight:500;color:var(--ink);margin-bottom:0.5rem;">When working with you as a client, we may collect:</p>
-      <ul style="padding-left:1.5rem;margin-bottom:1.5rem;">
-        <li style="margin-bottom:0.4rem;">Contact details (name, email address, phone number)</li>
-        <li style="margin-bottom:0.4rem;">Financial information (bank account number, invoicing details)</li>
-        <li style="margin-bottom:0.4rem;">Professional information (company, job title, VAT number)</li>
-        <li style="margin-bottom:0.4rem;">Personal data from our clients' customers</li>
-      </ul>
-      <p style="font-weight:500;color:var(--ink);margin-bottom:0.5rem;">When visiting our website, we may collect:</p>
-      <ul style="padding-left:1.5rem;margin-bottom:1.5rem;">
-        <li style="margin-bottom:0.4rem;">Contact details (name, email address, phone number)</li>
-        <li style="margin-bottom:0.4rem;">IP address</li>
-      </ul>
+      <p style="margin-top:1rem;">SOLIT.LEGAL processes your personal data strictly in compliance with all relevant European and Belgian data protection laws. This includes Regulation (EU) 2016/679 of the European Parliament and of the Council of 27 April 2016 on the protection of natural persons with regard to the processing of personal data and on the free movement of such data, and repealing Directive 95/46/EC, commonly known as the General Data Protection Regulation ("<strong style="color:var(--ink);">GDPR</strong>") - as well as the Belgian Act of 30 July 2018 regarding the protection of natural persons in relation to the processing of personal data.</p>
 
-      <h2 style="font-family:var(--serif);font-size:1.5rem;font-weight:300;color:var(--ink);margin:2.5rem 0 1rem;">Why do we collect personal data?</h2>
-      <p style="font-weight:500;color:var(--ink);margin-bottom:0.5rem;">Performance of the agreement</p>
-      <p style="margin-bottom:1.5rem;">We process contact details, professional information, financial data and client customer data to provide our services — for example to contact counterparties during contract negotiations or to issue invoices.</p>
-      <p style="font-weight:500;color:var(--ink);margin-bottom:0.5rem;">Legal obligation</p>
-      <p style="margin-bottom:1.5rem;">We process contact and financial information because we are legally required to do so, for example for invoicing and archiving purposes.</p>
-      <p style="font-weight:500;color:var(--ink);margin-bottom:0.5rem;">Legitimate interest</p>
-      <p style="margin-bottom:1.5rem;">We process technical information and visit logs to improve our website and optimise our services. We may also send you newsletters.</p>
+      <p style="margin-top:1rem;">This privacy policy is designed to inform you as visitor to our websites (<a href="http://www.solit.legal" style="color:var(--accent);">www.solit.legal</a> and <a href="http://www.solitlegal.be" style="color:var(--accent);">www.solitlegal.be</a>) ("<strong style="color:var(--ink);">Website</strong>") and as a client of SOLIT.LEGAL about how we collect, use, and protect your personal data. SOLIT.LEGAL acts as a data controller regarding the processing activities outlined in this privacy policy.</p>
 
-      <h2 style="font-family:var(--serif);font-size:1.5rem;font-weight:300;color:var(--ink);margin:2.5rem 0 1rem;">Sub-processors</h2>
-      <p style="margin-bottom:1rem;">We only work with third parties who take data protection seriously. These include:</p>
-      <ul style="padding-left:1.5rem;margin-bottom:1.5rem;">
-        <li style="margin-bottom:0.4rem;"><span style="color:var(--ink);font-weight:500;">Hosting and support:</span> IT partners who host and maintain our infrastructure</li>
-        <li style="margin-bottom:0.4rem;"><span style="color:var(--ink);font-weight:500;">Administration:</span> Third parties assisting with invoicing and accounting</li>
-        <li style="margin-bottom:0.4rem;"><span style="color:var(--ink);font-weight:500;">Third-party service providers:</span> Specialists engaged for specific expertise (tax, corporate, etc.)</li>
-        <li style="margin-bottom:0.4rem;"><span style="color:var(--ink);font-weight:500;">Marketing and communication:</span> Third parties supporting our marketing activities</li>
-      </ul>
+      <p style="margin-top:1rem;">Should you have any questions after reviewing this policy, we encourage you to contact us for further clarification.</p>
 
-      <h2 style="font-family:var(--serif);font-size:1.5rem;font-weight:300;color:var(--ink);margin:2.5rem 0 1rem;">How long do we store your data?</h2>
-      <p style="margin-bottom:1rem;">We store your personal data only for as long as necessary to provide our services — meaning for the duration of our working relationship. Specific data such as invoicing details must be retained for the periods prescribed by applicable law.</p>
+      <!-- Table of Contents -->
+      <div style="background:#f0ede7;border-left:3px solid var(--gold);padding:1.5rem 2rem;margin:2.5rem 0;">
+        <div style="font-size:0.7rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--gold);margin-bottom:1rem;font-weight:500;">Table of Contents</div>
+        <ol style="padding-left:1.25rem;margin:0;">
+          <li style="margin-bottom:0.4rem;">When does this privacy policy apply?</li>
+          <li style="margin-bottom:0.4rem;">Who is SOLIT.LEGAL?</li>
+          <li style="margin-bottom:0.4rem;">Which personal data do we process and how do we obtain it?</li>
+          <li style="margin-bottom:0.4rem;">For which purposes do we process your personal data and what is the legal basis?</li>
+          <li style="margin-bottom:0.4rem;">Does SOLIT.LEGAL use automated individual decision-making?</li>
+          <li style="margin-bottom:0.4rem;">Will my personal data be shared with any third parties?</li>
+          <li style="margin-bottom:0.4rem;">Security</li>
+          <li style="margin-bottom:0.4rem;">Will your personal data be shared outside of the EEA?</li>
+          <li style="margin-bottom:0.4rem;">How long do we retain your personal data?</li>
+          <li style="margin-bottom:0.4rem;">Will we use your personal data for direct marketing?</li>
+          <li style="margin-bottom:0.4rem;">What are my rights?</li>
+          <li style="margin-bottom:0.4rem;">How can you contact us?</li>
+          <li style="margin-bottom:0.4rem;">How can you contact the Data Protection Authority?</li>
+          <li style="margin-bottom:0.4rem;">Changes to this privacy policy</li>
+        </ol>
+      </div>
 
-      <h2 style="font-family:var(--serif);font-size:1.5rem;font-weight:300;color:var(--ink);margin:2.5rem 0 1rem;">Your rights</h2>
-      <ul style="padding-left:1.5rem;margin-bottom:1.5rem;">
-        <li style="margin-bottom:0.75rem;"><span style="color:var(--ink);font-weight:500;">Access and rectification:</span> You can request access to your personal data and ask us to correct any errors.</li>
-        <li style="margin-bottom:0.75rem;"><span style="color:var(--ink);font-weight:500;">Restriction and objection:</span> You can request that we limit certain processing activities or object to them.</li>
-        <li style="margin-bottom:0.75rem;"><span style="color:var(--ink);font-weight:500;">Data portability:</span> You can request your personal data in a machine-readable format.</li>
-        <li style="margin-bottom:0.75rem;"><span style="color:var(--ink);font-weight:500;">Withdrawal of consent:</span> Where processing is based on your consent, you may withdraw it at any time.</li>
-        <li style="margin-bottom:0.75rem;"><span style="color:var(--ink);font-weight:500;">Right to be forgotten:</span> You can request that we erase your personal data.</li>
-        <li style="margin-bottom:0.75rem;"><span style="color:var(--ink);font-weight:500;">Complaint:</span> You may file a complaint with the Belgian Data Protection Authority, Drukpersstraat 35, 1000 Brussels (+32 2 274 48 00).</li>
-      </ul>
+      <!-- 1. When does this privacy policy apply? -->
+      <h2 style="font-family:var(--serif);font-size:1.5rem;font-weight:300;color:var(--ink);margin:2.5rem 0 1rem;"><span style="color:var(--gold);margin-right:0.5rem;">1.</span> When does this privacy policy apply?</h2>
+      <p>This privacy policy explains how we collect, use, and process your personal data when you visit and interact with our Website, when you apply for job vacancies, or when you are engaging with SOLIT.LEGAL as a client.</p>
+      <p style="margin-top:1rem;">Please note that if our Website redirects you to a third-party website or application, the terms, conditions, and privacy policy of that third party may apply instead. We encourage you to review the relevant privacy policies and applicable terms before providing any personal data to those external platforms or websites.</p>
 
-      <p style="font-size:0.82rem;color:var(--muted);border-top:1px solid var(--rule);padding-top:2rem;margin-top:3rem;">For any privacy-related questions, contact us at <a href="/cdn-cgi/l/email-protection#620a070e0e0d22110d0e0b164c0e0705030e" style="color:var(--accent);"><span class="__cf_email__" data-cfemail="731b161f1f1c33001c1f1a075d1f1614121f">[email&#160;protected]</span></a>.</p>
+      <!-- 2. Who is SOLIT.LEGAL? -->
+      <h2 style="font-family:var(--serif);font-size:1.5rem;font-weight:300;color:var(--ink);margin:2.5rem 0 1rem;"><span style="color:var(--gold);margin-right:0.5rem;">2.</span> Who is SOLIT.LEGAL?</h2>
+      <p>SOLIT.LEGAL is a Belgian based legal consultancy and advisory firm, specializing in IT law, data protection and privacy, artificial intelligence and management consulting.</p>
+      <div style="background:var(--paper);border:1px solid var(--rule);padding:1.5rem 2rem;margin-top:1.5rem;">
+        <p style="margin:0;"><strong style="color:var(--ink);">SOLIT.LEGAL NV</strong></p>
+        <p style="margin:0.25rem 0 0;">BE 0735.409.755</p>
+        <p style="margin:0.25rem 0 0;">Ten Hoflaan 26</p>
+        <p style="margin:0.25rem 0 0;">2980 Zoersel (Belgium) RPR Antwerp</p>
+        <p style="margin:0.25rem 0 0;"><a href="mailto:hello@solit.legal" style="color:var(--accent);">hello@solit.legal</a></p>
+      </div>
+
+      <!-- 3. Which personal data do we process and how do we obtain it? -->
+      <h2 style="font-family:var(--serif);font-size:1.5rem;font-weight:300;color:var(--ink);margin:2.5rem 0 1rem;"><span style="color:var(--gold);margin-right:0.5rem;">3.</span> Which personal data do we process and how do we obtain it?</h2>
+      <p style="margin-bottom:1.5rem;">Depending on the interactions you have with SOLIT.LEGAL as our client and how you interacts with our Website, we can process the following types of personal data:</p>
+
+      <div style="border:1px solid var(--rule);margin-bottom:1.5rem;">
+        <div style="background:var(--accent);color:var(--paper);padding:0.75rem 1.25rem;font-size:0.75rem;letter-spacing:0.1em;text-transform:uppercase;font-weight:500;">When you visit our Website</div>
+        <div style="padding:1.25rem;">
+          <p><strong style="color:var(--ink);">Technical information, usage data, history and logs</strong></p>
+          <p>We may process specific personal data through cookies (and similar technologies) installed on our Website (e.g. IP address, browser type, operating system, etc.). We refer to our <a href="https://solit.legal/cookie-policy/" style="color:var(--accent);">cookie policy</a> for a complete overview of all cookies we use and all relevant information in this regard.</p>
+        </div>
+      </div>
+
+      <div style="border:1px solid var(--rule);margin-bottom:1.5rem;">
+        <div style="background:var(--accent);color:var(--paper);padding:0.75rem 1.25rem;font-size:0.75rem;letter-spacing:0.1em;text-transform:uppercase;font-weight:500;">When you reach out to us directly</div>
+        <div style="padding:1.25rem;">
+          <p><strong style="color:var(--ink);">Identification and contact details; personal characteristics</strong></p>
+          <p style="margin-bottom:1rem;">We may process your name, gender, address, email address, company name, job title, phone number, communication preferences and any other personal data you share with us.</p>
+          <p><strong style="color:var(--ink);">Professional information</strong></p>
+          <p style="margin-bottom:1rem;">We may process your professional contact information, your job function, the company you work for and the services you are interested in.</p>
+          <p><strong style="color:var(--ink);">Technical information, usage data, history and logs</strong></p>
+          <p>We may collect specific personal data through cookies (and similar technologies) installed on our Website (e.g. IP address, browser type, operating system, etc.). We refer to our <a href="https://solit.legal/cookie-policy/" style="color:var(--accent);">cookie policy</a> for a complete overview of all cookies we use and all relevant information in this regard.</p>
+        </div>
+      </div>
+
+      <div style="border:1px solid var(--rule);margin-bottom:1.5rem;">
+        <div style="background:var(--accent);color:var(--paper);padding:0.75rem 1.25rem;font-size:0.75rem;letter-spacing:0.1em;text-transform:uppercase;font-weight:500;">When you apply for a job vacancy</div>
+        <div style="padding:1.25rem;">
+          <p><strong style="color:var(--ink);">Identification and contact details; personal characteristics</strong></p>
+          <p>We may process your name, gender, address, email address, company name, job title, phone number, marital status, date of birth, nationality, communication preferences and any other personal data you share with us.</p>
+        </div>
+      </div>
+
+      <div style="border:1px solid var(--rule);margin-bottom:1.5rem;">
+        <div style="background:var(--accent);color:var(--paper);padding:0.75rem 1.25rem;font-size:0.75rem;letter-spacing:0.1em;text-transform:uppercase;font-weight:500;">When you work with us</div>
+        <div style="padding:1.25rem;">
+          <p><strong style="color:var(--ink);">Identification and contact details; personal characteristics</strong></p>
+          <p style="margin-bottom:1rem;">We may process your contacting details (such as your name, email address, phone number etc.) financial information (bank account number, invoicing details, etc.) professional information (such as the company you are working for, your job description and title, VAT number etc.) personal data from our client&rsquo;s customers.</p>
+          <p><strong style="color:var(--ink);">Professional information</strong></p>
+          <p>We may process your professional contact information, your job function, the company you work for and the services you are interested in.</p>
+        </div>
+      </div>
+
+      <!-- 4. Purposes and legal basis -->
+      <h2 style="font-family:var(--serif);font-size:1.5rem;font-weight:300;color:var(--ink);margin:2.5rem 0 1rem;"><span style="color:var(--gold);margin-right:0.5rem;">4.</span> For which purposes do we process your personal data and what is the legal basis?</h2>
+      <p style="margin-bottom:1.5rem;">We collect and process your personal data for various reasons, but only insofar as necessary to achieve the intended purpose. Below, you can find an overview of why we process specific categories of personal data, including the associated legal basis for such processing.</p>
+
+      <div style="overflow-x:auto;margin-bottom:2rem;">
+        <table style="width:100%;border-collapse:collapse;font-size:0.88rem;">
+          <thead>
+            <tr style="background:var(--accent);color:var(--paper);">
+              <th style="padding:0.75rem 1rem;text-align:left;font-weight:500;font-size:0.72rem;letter-spacing:0.08em;text-transform:uppercase;">Purpose of processing</th>
+              <th style="padding:0.75rem 1rem;text-align:left;font-weight:500;font-size:0.72rem;letter-spacing:0.08em;text-transform:uppercase;">Categories of personal data</th>
+              <th style="padding:0.75rem 1rem;text-align:left;font-weight:500;font-size:0.72rem;letter-spacing:0.08em;text-transform:uppercase;">Legal basis</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr style="border-bottom:1px solid var(--rule);">
+              <td style="padding:0.75rem 1rem;vertical-align:top;">Responding to your questions submitted via our Website (or via email)</td>
+              <td style="padding:0.75rem 1rem;vertical-align:top;">Identification and contact details; personal characteristics<br>Professional information</td>
+              <td style="padding:0.75rem 1rem;vertical-align:top;">Performance of the agreement</td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--rule);background:#fafaf7;">
+              <td style="padding:0.75rem 1rem;vertical-align:top;">Managing job applications and assessing your suitability for the job and for recruitment purposes in general</td>
+              <td style="padding:0.75rem 1rem;vertical-align:top;">Identification and contact details; personal characteristics<br>Professional information</td>
+              <td style="padding:0.75rem 1rem;vertical-align:top;">Legitimate interest (or consent in case you allow us to keep your data for future job vacancies)</td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--rule);">
+              <td style="padding:0.75rem 1rem;vertical-align:top;">Management of our Website</td>
+              <td style="padding:0.75rem 1rem;vertical-align:top;">Technical information, usage data, history and logs</td>
+              <td style="padding:0.75rem 1rem;vertical-align:top;">Please read our cookie policy</td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--rule);background:#fafaf7;">
+              <td style="padding:0.75rem 1rem;vertical-align:top;">Advising you as our client</td>
+              <td style="padding:0.75rem 1rem;vertical-align:top;">Identification and contact details; personal characteristics<br>Professional information</td>
+              <td style="padding:0.75rem 1rem;vertical-align:top;">Performance of the agreement</td>
+            </tr>
+            <tr>
+              <td style="padding:0.75rem 1rem;vertical-align:top;">Invoicing</td>
+              <td style="padding:0.75rem 1rem;vertical-align:top;">Identification and contact details; personal characteristics<br>Professional information</td>
+              <td style="padding:0.75rem 1rem;vertical-align:top;">Performance of the Agreement and Legal Obligation</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p>Each processing activity we perform using your personal data is based on a specific legal basis. The legal basis on which our processing activities are based are clearly stated in the above overview, but we believe it is important to provide you with further explanation of each of these concepts:</p>
+
+      <p style="margin-top:1rem;">Each processing activity we carry out involving your personal data is grounded in a specific legal basis, as required by applicable data protection legislation. We have indicated the relevant legal basis for each purpose of processing outlined above. However, we believe it is important to give you a clearer understanding of what these legal bases mean in practice:</p>
+
+      <div style="overflow-x:auto;margin:1.5rem 0 2rem;">
+        <table style="width:100%;border-collapse:collapse;font-size:0.88rem;">
+          <tr style="border-bottom:1px solid var(--rule);">
+            <td style="padding:0.75rem 1rem;vertical-align:top;width:30%;"><strong style="color:var(--ink);">Performance of the agreement</strong></td>
+            <td style="padding:0.75rem 1rem;vertical-align:top;">This legal basis means your data is processed when necessary to enter into or fulfil our (pre)contractual obligations to you.</td>
+          </tr>
+          <tr style="border-bottom:1px solid var(--rule);background:#fafaf7;">
+            <td style="padding:0.75rem 1rem;vertical-align:top;"><strong style="color:var(--ink);">Legitimate interest</strong></td>
+            <td style="padding:0.75rem 1rem;vertical-align:top;">This legal basis means your data is processed when it is necessary for our legitimate interests, provided that such interests are not overridden by your fundamental rights and freedoms. We always strive to maintain the correct balance. The legitimate interests we are pursuing are: Making the best possible recruitment decisions possible;</td>
+          </tr>
+          <tr style="border-bottom:1px solid var(--rule);">
+            <td style="padding:0.75rem 1rem;vertical-align:top;"><strong style="color:var(--ink);">Consent</strong></td>
+            <td style="padding:0.75rem 1rem;vertical-align:top;">This legal basis means your data is processed based on your explicit consent (e.g. via opt-in) for specific purposes.</td>
+          </tr>
+          <tr>
+            <td style="padding:0.75rem 1rem;vertical-align:top;"><strong style="color:var(--ink);">Legal obligation</strong></td>
+            <td style="padding:0.75rem 1rem;vertical-align:top;">This legal basis means our processing of your personal data is based upon a legal obligation which is imposed upon us.</td>
+          </tr>
+        </table>
+      </div>
+
+      <p>We always seek to process as little personal data as necessary for the purpose we are aiming to achieve. As an example, the personal data we request is often essential to enable us to help you or for offering the services you requests. Without processing such personal data, we would often not be able to respond to your request.</p>
+
+      <!-- 5. Automated decision-making -->
+      <h2 style="font-family:var(--serif);font-size:1.5rem;font-weight:300;color:var(--ink);margin:2.5rem 0 1rem;"><span style="color:var(--gold);margin-right:0.5rem;">5.</span> Does SOLIT.LEGAL use automated individual decision-making?</h2>
+      <p>No, we will never take any individual decisions through automated processes such as profiling which produces legal effects concerning you or similarly significantly affects you. You can count on a true personal approach when interacting with SOLIT.LEGAL.</p>
+
+      <!-- 6. Third parties -->
+      <h2 style="font-family:var(--serif);font-size:1.5rem;font-weight:300;color:var(--ink);margin:2.5rem 0 1rem;"><span style="color:var(--gold);margin-right:0.5rem;">6.</span> Will my personal data be shared with any third parties?</h2>
+      <p style="margin-bottom:1.5rem;">We may share your personal data with third parties depending on the type of personal data you provide and the purposes for which it is processed. These third parties may include service providers, partners, or other entities necessary to support our operations, comply with legal obligations, or fulfil contractual requirements. Below you can find an overview:</p>
+
+      <div style="overflow-x:auto;margin-bottom:2rem;">
+        <table style="width:100%;border-collapse:collapse;font-size:0.88rem;">
+          <tr style="border-bottom:1px solid var(--rule);">
+            <td style="padding:0.75rem 1rem;vertical-align:top;width:30%;"><strong style="color:var(--ink);">Suppliers, subcontractors and other service providers</strong></td>
+            <td style="padding:0.75rem 1rem;vertical-align:top;">We work with a number of external companies, independent service providers, suppliers, subcontractors, communication providers, and intermediaries to support the delivery of our services and the operations of our business. These may include IT and software vendors (such as CRM platforms like Teamleader, Legal tech and AI tools), legal advisors, consultants, accountants, and other professional service providers. These third parties may process your personal data when necessary for the provision of their services. Where such parties act as data processors on our behalf, we enter into a data processing agreement with them to ensure compliance with applicable data protection laws. We also require them to implement appropriate technical and organisational measures to safeguard your personal data at all times.</td>
+          </tr>
+          <tr style="border-bottom:1px solid var(--rule);background:#fafaf7;">
+            <td style="padding:0.75rem 1rem;vertical-align:top;"><strong style="color:var(--ink);">Partners</strong></td>
+            <td style="padding:0.75rem 1rem;vertical-align:top;">Depending on the service you request from us, we might need to share your personal data with the partners we are engaging.</td>
+          </tr>
+          <tr style="border-bottom:1px solid var(--rule);">
+            <td style="padding:0.75rem 1rem;vertical-align:top;"><strong style="color:var(--ink);">Authorities and auditors</strong></td>
+            <td style="padding:0.75rem 1rem;vertical-align:top;">If required by law, under a legal procedure or in case of an audit, we may share your personal data with specific authorities, government institutions or auditors.</td>
+          </tr>
+          <tr>
+            <td style="padding:0.75rem 1rem;vertical-align:top;"><strong style="color:var(--ink);">Business transfer</strong></td>
+            <td style="padding:0.75rem 1rem;vertical-align:top;">In the event of a merger, acquisition, or other corporate restructuring in which SOLIT.LEGAL is involved, your personal data may be transferred to third parties involved in this process, subject to appropriate safeguards.</td>
+          </tr>
+        </table>
+      </div>
+
+      <!-- 7. Security -->
+      <h2 style="font-family:var(--serif);font-size:1.5rem;font-weight:300;color:var(--ink);margin:2.5rem 0 1rem;"><span style="color:var(--gold);margin-right:0.5rem;">7.</span> Security</h2>
+      <p>SOLIT.LEGAL is committed to make sure your personal data is safe and secure. We implement adequate technical and organizational measures to safeguard your personal data from accidental or unlawful destruction, loss, alteration, unauthorised disclosure of, or access to, personal data transmitted, stored or otherwise processed.</p>
+      <p style="margin-top:1rem;">However, you should know the internet is an open environment and we cannot guarantee that unauthorised third parties will never be able to defeat the measures we implement for security reasons or use your personal data for improper purposes.</p>
+
+      <!-- 8. Outside EEA -->
+      <h2 style="font-family:var(--serif);font-size:1.5rem;font-weight:300;color:var(--ink);margin:2.5rem 0 1rem;"><span style="color:var(--gold);margin-right:0.5rem;">8.</span> Will your personal data be shared outside of the EEA?</h2>
+      <p>When we share your personal data with third parties or sub-processors we engage, there is a possibility that your personal data will be transferred outside of the European Economic Area ("<strong style="color:var(--ink);">EEA</strong>"). In this case, we will ensure such transfer outside the EEA is always GDPR compliant, that we have a lawful basis for transferring your personal data and that we ensure appropriate safeguards are in place in order to provide an adequate level of protection for your personal data. For example, we can do so by including the <a href="https://ec.europa.eu/info/law/law-topic/data-protection/international-dimension-data-protection/standard-contractual-clauses-scc_en" style="color:var(--accent);">Standard Contractual Clauses</a> as issued by the European Commission in our agreements with these companies or by implementing any other mechanism for international data transfers included in the applicable (data protection) legislation (e.g. binding corporate rules, adequacy decisions issued by the European Commission, etc.). Any other (future) mechanisms accepted under applicable data protection legislation may also be used in this regard.</p>
+
+      <!-- 9. Retention -->
+      <h2 style="font-family:var(--serif);font-size:1.5rem;font-weight:300;color:var(--ink);margin:2.5rem 0 1rem;"><span style="color:var(--gold);margin-right:0.5rem;">9.</span> How long do we retain your personal data?</h2>
+      <p>We will retain your personal data only for as long as necessary to fulfil the purposes for which it was collected, including to meet legal, regulatory, or contractual obligations. Retention periods prescribed by applicable laws may also influence how long certain personal data must be kept. Personal data stored in file archiving of clients and linked to invoicing is retained for 10 years or as long as client relationship exists. Personal data processed for job vacancy purposes is retained for four weeks after the relevant vacancy is closed. Storage periods relation to cookies, are set out in our <a href="https://solit.legal/cookie-policy" style="color:var(--accent);">cookie policy</a>.</p>
+      <p style="margin-top:1rem;">If we process your personal data solely on the basis of your consent, you have the right to withdraw that consent at any time. Once withdrawn, we will no longer process your data for those purposes and will delete it accordingly.</p>
+      <p style="margin-top:1rem;">Depending on the category of personal data and the specific purposes for which it is being processed, we may retain certain data for extended periods&mdash;typically up to 5 or 10 years after its receipt. These longer retention periods are applied to meet legal or regulatory obligations, preserve evidence for potential legal proceedings, or comply with professional indemnity and accountability requirements.</p>
+
+      <!-- 10. Direct marketing -->
+      <h2 style="font-family:var(--serif);font-size:1.5rem;font-weight:300;color:var(--ink);margin:2.5rem 0 1rem;"><span style="color:var(--gold);margin-right:0.5rem;">10.</span> Will we use your personal data for direct marketing?</h2>
+      <p>If you are an existing client (based upon our legitimate interest) or if you have given us the required consent, we may process your personal data for direct marketing purposes. It enables us to keep you informed about the products we offer, any applicable promotions, events we may organize and in general the services we provide.</p>
+      <p style="margin-top:1rem;">In case you wish to withdraw the consent you have given us to process your personal data for direct marketing purposes, or you wish to object to processing your personal data for direct marketing purposes in case such processing is based on our legitimate interest, you can do so at any time by contacting us or by changing your preferences using the &ldquo;unsubscribe link&rdquo; we include in our direct marketing mailings. In case you would like to withdraw your consent regarding the use of cookies on our website and web shop, we refer to our cookie policy.</p>
+
+      <!-- 11. Your rights -->
+      <h2 style="font-family:var(--serif);font-size:1.5rem;font-weight:300;color:var(--ink);margin:2.5rem 0 1rem;"><span style="color:var(--gold);margin-right:0.5rem;">11.</span> What are my rights?</h2>
+      <p style="margin-bottom:1.5rem;">We want to ensure that you are fully informed about the rights you have regarding your personal data. If you wish to exercise any of these rights, you are welcome to contact us. To protect your privacy and ensure that your personal data is not disclosed to anyone else, we may need to verify your identity using appropriate means before processing your request.</p>
+
+      <div style="border-left:3px solid var(--gold);padding-left:1.5rem;margin-bottom:1.25rem;">
+        <p><strong style="color:var(--ink);">The right of access</strong> &ndash; You have the right to request access to the personal data we process about you at any time. This includes information such as the purposes for which your data is being processed, who receives your personal data, how long we store your personal data etc. You are also welcome to visit our headquarters to have physical access to your personal data, but if you prefer us to send you a copy of your personal data we process, this is also available on request.</p>
+      </div>
+
+      <div style="border-left:3px solid var(--gold);padding-left:1.5rem;margin-bottom:1.25rem;">
+        <p><strong style="color:var(--ink);">The right to rectification</strong> &ndash; If you believe that any of the personal data we hold about you is inaccurate or outdated, please let us know so that we can correct or update it without undue delay.</p>
+      </div>
+
+      <div style="border-left:3px solid var(--gold);padding-left:1.5rem;margin-bottom:1.25rem;">
+        <p><strong style="color:var(--ink);">The right to erasure</strong> &ndash; You can ask us to permanently erase the personal data of yours which we process. This is the so called &ldquo;right to be forgotten&rdquo;. It applies in several circumstances, for example when we process your personal data based upon your consent, when processing your personal data is no longer necessary for its original purposes, when we have no overriding legitimate interest to process your personal data and you object to the processing of your personal data, when we should erase your personal data to comply with a legal obligation or ruling, or when we processed your personal data unlawfully.</p>
+      </div>
+
+      <div style="border-left:3px solid var(--gold);padding-left:1.5rem;margin-bottom:1.25rem;">
+        <p><strong style="color:var(--ink);">The right to restriction</strong> &ndash; You have the right to ask us to restrict the processing activities we perform on your personal data. It applies in several circumstances, for example when you contest the accuracy of your personal data and we need to verify your contestation, when we process your personal data unlawfully and you oppose to the erasure of your personal data and asks restriction instead, when we no longer need your personal data for the purpose of processing but it is required in relation to legal claims, or when you object to the processing of your personal data but the verification of our legitimate grounds is still pending.</p>
+      </div>
+
+      <div style="border-left:3px solid var(--gold);padding-left:1.5rem;margin-bottom:1.25rem;">
+        <p><strong style="color:var(--ink);">The right to data portability</strong> &ndash; You have the right to receive the personal data we process about you in a structured, commonly used, and machine-readable format. You may also request that we transmit this data directly to another data controller, where technically feasible.</p>
+      </div>
+
+      <div style="border-left:3px solid var(--gold);padding-left:1.5rem;margin-bottom:1.25rem;">
+        <p><strong style="color:var(--ink);">The right to object</strong> &ndash; You have the right to object to processing of your personal data (including any profiling activities) based on our (or a third party&rsquo;s) legitimate interest or on grounds of public interest. You also have the right to object to any direct marketing activities we perform using your personal data. Any direct marketing we may send always contains a link to unsubscribe, making it as convenient as possible for you to unsubscribe.</p>
+      </div>
+
+      <div style="border-left:3px solid var(--gold);padding-left:1.5rem;margin-bottom:1.25rem;">
+        <p><strong style="color:var(--ink);">The right to submit a complaint</strong> &ndash; We do encourage you to reach out to us first in case you have any concerns on how we process your personal data, but you have the right to submit a complaint to the competent Data Protection Authority in case you believe we breached your rights or our responsibilities under the applicable legislation. The relevant contact details of the Belgian Data Protection Authority can be found at the end of this privacy policy.</p>
+      </div>
+
+      <!-- 12. Contact us -->
+      <h2 style="font-family:var(--serif);font-size:1.5rem;font-weight:300;color:var(--ink);margin:2.5rem 0 1rem;"><span style="color:var(--gold);margin-right:0.5rem;">12.</span> How can you contact us?</h2>
+      <p style="margin-bottom:1.5rem;">We are here to assist you with any questions you may have regarding this privacy policy or the processing of your personal data. Please do not hesitate to get in touch with us:</p>
+      <div style="background:var(--paper);border:1px solid var(--rule);padding:1.5rem 2rem;">
+        <p style="margin:0;"><strong style="color:var(--ink);">SOLIT.LEGAL NV</strong></p>
+        <p style="margin:0.25rem 0 0;">BE0735.409.755</p>
+        <p style="margin:0.25rem 0 0;">Ten Hoflaan 26</p>
+        <p style="margin:0.25rem 0 0;">2980 Zoersel (Belgium) RPR Antwerp</p>
+        <p style="margin:0.25rem 0 0;"><a href="mailto:hello@solit.legal" style="color:var(--accent);">hello@solit.legal</a></p>
+      </div>
+
+      <!-- 13. Data Protection Authority -->
+      <h2 style="font-family:var(--serif);font-size:1.5rem;font-weight:300;color:var(--ink);margin:2.5rem 0 1rem;"><span style="color:var(--gold);margin-right:0.5rem;">13.</span> How can you contact the Data Protection Authority?</h2>
+      <p style="margin-bottom:1.5rem;">We encourage you to contact us first if you have any questions, concerns, or complaints regarding how we handle your personal data. We are committed to addressing your inquiries promptly and transparently. If you remain unsatisfied with our response, or if you believe that your personal data has been processed unlawfully, you can file a complaint with the Belgian Data Protection Authority:</p>
+      <div style="background:var(--paper);border:1px solid var(--rule);padding:1.5rem 2rem;">
+        <p style="margin:0;"><strong style="color:var(--ink);">Belgian Data Protection Authority</strong></p>
+        <p style="margin:0.25rem 0 0;">Drukpersstraat 35, 1000 Brussels</p>
+        <p style="margin:0.25rem 0 0;">+32 (0)2 274 48 00</p>
+        <p style="margin:0.25rem 0 0;"><a href="mailto:contact@apd-gba.be" style="color:var(--accent);">contact@apd-gba.be</a></p>
+        <p style="margin:0.25rem 0 0;"><a href="https://www.gegevensbeschermingsautoriteit.be/" style="color:var(--accent);">https://www.gegevensbeschermingsautoriteit.be/</a></p>
+      </div>
+
+      <!-- 14. Changes -->
+      <h2 style="font-family:var(--serif);font-size:1.5rem;font-weight:300;color:var(--ink);margin:2.5rem 0 1rem;"><span style="color:var(--gold);margin-right:0.5rem;">14.</span> Changes to this privacy policy</h2>
+      <p>We may update this privacy policy from time to time to reflect changes in our data processing practices or to comply with evolving legal and regulatory requirements. Any updates will be published on our Website, ensuring that you always have access to the most current version. We encourage you to review this privacy policy periodically to stay informed about how we collect, use, and protect your personal data. Where applicable, we will notify you of any material changes by email or through a prominent notice on our Website.</p>
+
+      <p style="font-size:0.82rem;color:var(--muted);border-top:1px solid var(--rule);padding-top:2rem;margin-top:3rem;">Most recent update: April 17th 2026</p>
     </div>
   </div>
 </div>
@@ -1296,7 +1802,7 @@
 
     <div style="background:var(--paper);border:1px solid var(--rule);padding:2rem 2.5rem;margin-bottom:3rem;">
       <div style="font-size:0.7rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--gold);margin-bottom:0.75rem;">SOLIT.LEGAL BV</div>
-      <p style="font-size:0.9rem;color:var(--muted);line-height:1.7;margin:0;">Maatschappelijke zetel: Ten Hoflaan 26, 2980 Zoersel, België<br>Ondernemingsnummer: 735.409.755<br>BTW nummer: BE 735.409.755<br>E-mail: <a href="/cdn-cgi/l/email-protection#5c34393030331c2f333035287230393b3d30" style="color:var(--accent);"><span class="__cf_email__" data-cfemail="94fcf1f8f8fbd4e7fbf8fde0baf8f1f3f5f8">[email&#160;protected]</span></a><br>RPR Antwerpen, afdeling Antwerpen<br><br>Laatste update: 8 december 2025 (van toepassing vanaf 1 januari 2026)</p>
+      <p style="font-size:0.9rem;color:var(--muted);line-height:1.7;margin:0;">Maatschappelijke zetel: Ten Hoflaan 26, 2980 Zoersel, België<br>Ondernemingsnummer: 735.409.755<br>BTW nummer: BE 735.409.755<br>E-mail: <a href="mailto:hello@solit.legal" style="color:var(--accent);">hello@solit.legal</a><br>RPR Antwerpen, afdeling Antwerpen<br><br>Laatste update: 8 december 2025 (van toepassing vanaf 1 januari 2026)</p>
     </div>
 
     <div style="font-size:0.95rem;color:var(--muted);line-height:1.8;">
@@ -1338,7 +1844,7 @@
         <li style="margin-bottom:0.5rem;"><span style="color:var(--ink);">Uurtarief:</span> Maandelijks, nadat de prestaties geleverd werden.</li>
       </ul>
       <p style="margin-bottom:1rem;">Indien de opdrachtbrief schriftelijk uitdrukkelijk afwijkt van deze betalingsmodaliteiten, zijn de betalingsvoorwaarden uit de opdrachtbrief van toepassing.</p>
-      <p style="margin-bottom:1rem;">De Klant gaat expliciet akkoord met elektronische facturatie, en heeft steeds het recht gratis een papieren kopie van de factuur te ontvangen op uitdrukkelijk schriftelijk verzoek van de Klant via <a href="/cdn-cgi/l/email-protection#81e9e4ededeec1f2eeede8f5afede4e6e0ed" style="color:var(--accent);"><span class="__cf_email__" data-cfemail="224a474e4e4d62514d4e4b560c4e4745434e">[email&#160;protected]</span></a>. Facturen worden verzonden naar het facturatie-e-mailadres van de Klant, zoals vermeld in de opdrachtbrief (en/of via het PEPPOL-netwerk, indien van toepassing). De Klant is verantwoordelijk voor het behouden van een actieve en werkende PEPPOL-Participant ID en Access Point, indien van toepassing.</p>
+      <p style="margin-bottom:1rem;">De Klant gaat expliciet akkoord met elektronische facturatie, en heeft steeds het recht gratis een papieren kopie van de factuur te ontvangen op uitdrukkelijk schriftelijk verzoek van de Klant via <a href="mailto:hello@solit.legal" style="color:var(--accent);">hello@solit.legal</a>. Facturen worden verzonden naar het facturatie-e-mailadres van de Klant, zoals vermeld in de opdrachtbrief (en/of via het PEPPOL-netwerk, indien van toepassing). De Klant is verantwoordelijk voor het behouden van een actieve en werkende PEPPOL-Participant ID en Access Point, indien van toepassing.</p>
       <p style="margin-bottom:1rem;">Facturen zijn betaalbaar binnen de betalingstermijn van veertien (14) dagen. Laattijdige betalingen zijn van rechtswege en zonder voorafgaande ingebrekestelling onderworpen aan laattijdigheidsinteresten zoals berekend in de Wet van 2 Augustus 2002 betreffende de bestrijding van de betalingsachterstand bij handelstransacties. Bij laattijdige betaling wordt het resterende saldo zoals begroot in de opdrachtbrief, de abonnementsformule of projectvoorstel integraal en meteen opeisbaar.</p>
       <p>Prijsopgaves worden opgemaakt conform de gegevens die verstrekt worden door de Klant. Indien de verstrekte informatie onvolledig is of onjuiste gegevens bevat, heeft SOLIT.LEGAL het recht om de ingeschatte prijzen aan te passen. Dergelijke aanpassingen kunnen zonder voorgaande mededeling aan de Klant in rekening gebracht worden. Prijsopgaves worden vrijblijvend aangeboden en binden SOLIT.LEGAL niet vooraleer de Klant formeel heeft bevestigd en een opdrachtbrief heeft ondertekend. Onder prijsopgave wordt ook iedere offerte, begroting, voorcalculatie, aanbieding of gelijkaardige mededeling begrepen. Prijsopgaves zijn gedurende tien (10) kalenderdagen geldig, tenzij partijen expliciet een andere geldingsduur zijn overeengekomen.</p>
 
@@ -1350,7 +1856,7 @@
       <p>“Vertrouwelijke Informatie” van een partij betekent de informatie van de respectievelijke partij, geschreven, mondeling, elektronisch of in eender welke andere vorm, en welke (i) uitdrukkelijk is aangeduid als zijnde vertrouwelijk of beschermd, of (ii) redelijkerwijze beschermd zou moeten worden als vertrouwelijk of traditioneel wordt erkend als zijnde confidentieel van aard, losstaand van het feit of het uitdrukkelijk werd aangeduid als vertrouwelijk, inclusief maar niet gelimiteerd tot informatie en feiten betreffende ondernemingsplannen/strategieën, klanten, prospecten, medewerkers, leveranciers, partners, investeerders, verbonden vennootschappen of anderen, opleiding methodes en opleidingsmateriaal, financiële informatie, marketingplannen, sales prospecten, klantenlijsten, uitvindingen, programma apparatuur, ontdekkingen, ideeën, concepten, know-how, technieken, formules, processen, procedures, codes en alle technische of handelsgeheimen, inclusief alle kopieën van al het voorgaande of alle analyses, studies of rapporten die het voorgaande omvatten, weergeven of hierop zijn gebaseerd.</p>
 
       <h2 style="font-family:var(--serif);font-size:1.5rem;font-weight:300;color:var(--ink);margin:2.5rem 0 1rem;">7. Gegevensbescherming</h2>
-      <p style="margin-bottom:1rem;">Gegevensbescherming en privacy is voor SOLIT.LEGAL vanzelfsprekend belangrijk. In dit kader verwijzen we naar ons privacybeleid beschikbaar via onze website. In dit privacybeleid vindt u alle informatie terug met betrekking tot de persoonsgegevens die door SOLIT.LEGAL worden verwerkt. In geval van vragen kan u ons contacteren via <a href="/cdn-cgi/l/email-protection#026a676e6e6d42716d6e6b762c6e6765636e" style="color:var(--accent);"><span class="__cf_email__" data-cfemail="335b565f5f5c73405c5f5a471d5f5654525f">[email&#160;protected]</span></a>.</p>
+      <p style="margin-bottom:1rem;">Gegevensbescherming en privacy is voor SOLIT.LEGAL vanzelfsprekend belangrijk. In dit kader verwijzen we naar ons privacybeleid beschikbaar via onze website. In dit privacybeleid vindt u alle informatie terug met betrekking tot de persoonsgegevens die door SOLIT.LEGAL worden verwerkt. In geval van vragen kan u ons contacteren via <a href="mailto:hello@solit.legal" style="color:var(--accent);">hello@solit.legal</a>.</p>
       <p style="margin-bottom:1rem;">SOLIT.LEGAL zal persoonsgegevens steeds verwerken met inachtname van de toepasselijke wetgeving, waaronder de Verordening (EU) 2016/679 (GDPR) en de Wet van 30 juli 2018 betreffende de bescherming van natuurlijke personen met betrekking tot de verwerking van persoonsgegevens. De Klant garandeert dat zij over de vereiste rechtsgrond beschikt omtrent de verwerking van persoonsgegevens en de doorgifte van deze persoonsgegevens aan SOLIT.LEGAL. Informatie omtrent deze verwerking (en doorgifte) dient, inclusief (verwijzing naar) de privacyverklaring, aan betrokkenen in kwestie te worden bezorgd.</p>
       <p>Persoonsgegevens die SOLIT.LEGAL ontvangt in kader van de uitvoering van de Diensten, worden enkel verwerkt in kader van de uitvoering van de overeenkomst tussen SOLIT.LEGAL en de Klant (en zoals omschreven in ons privacy beleid). SOLIT.LEGAL implementeert tevens gepaste technische en organisatorische maatregelen ter bescherming van de persoonsgegevens die worden verwerkt. SOLIT.LEGAL treedt in regel op als verwerkingsverantwoordelijke t.a.v. de persoonsgegevens die worden verwerkt bij de uitvoering van Diensten wanneer deze betrekking hebben op adviesverlening.</p>
 
@@ -1381,7 +1887,7 @@
       <p style="margin-bottom:1rem;">De Klant bevestigt dat het projectvoorstel en de Algemene Voorwaarden voldoen aan de dienstverlening waarnaar de Klant op zoek is en dat de Klant de mogelijkheid gehad heeft om aanpassingen te vragen. Elk beding van de Algemene Voorwaarden en het projectvoorstel wordt dan ook geacht tot stand te zijn gekomen na onderhandeling tussen beide partijen en de overeenkomst is dan ook gestoeld op contractsvrijheid.</p>
       <p style="margin-bottom:1rem;">SOLIT.LEGAL adviseert naar best vermogen, met expertise, onafhankelijkheid en diligentie zoals van een gekwalificeerde dienstverlener redelijkerwijs verwacht kan worden. SOLIT.LEGAL geeft echter geen garanties omtrent de geleverde Diensten voor wat betreft een specifieke doelgeschiktheid en baseert zich op de informatie ontvangen van de Klant. Er wordt geen garantie gegeven voor foutief advies gebaseerd zijn op eventuele onvolledige informatie of parameters die zij van de Klant heeft ontvangen.</p>
       <p style="margin-bottom:1rem;">In geval van tegenstrijdige bepalingen zal de onderstaande volgorde van documenten gelden, waarbij het eerste document prevaleert op het tweede en zo verder:<br>1. Opdrachtbrief<br>2. Bijlage(n) (indien van toepassing)<br>3. Algemene Voorwaarden</p>
-      <p style="margin-bottom:1rem;">Notificaties met betrekking tot deze Algemene Voorwaarden vanuit SOLIT.LEGAL aan de Klant worden gericht aan de persoon geïdentificeerd in de opdrachtbrief via e-mail. Notificaties van de Klant aan SOLIT.LEGAL worden per post verstuurd naar de maatschappelijke zetel van SOLIT.LEGAL (en per e-mail in kopie aan <a href="/cdn-cgi/l/email-protection#f39b969f9f9cb3809c9f9a87dd9f9694929f" style="color:var(--accent);"><span class="__cf_email__" data-cfemail="c6aea3aaaaa986b5a9aaafb2e8aaa3a1a7aa">[email&#160;protected]</span></a>). Notificaties worden geacht te zijn ontvangen drie (3) werkdagen na de verzending ervan.</p>
+      <p style="margin-bottom:1rem;">Notificaties met betrekking tot deze Algemene Voorwaarden vanuit SOLIT.LEGAL aan de Klant worden gericht aan de persoon geïdentificeerd in de opdrachtbrief via e-mail. Notificaties van de Klant aan SOLIT.LEGAL worden per post verstuurd naar de maatschappelijke zetel van SOLIT.LEGAL (en per e-mail in kopie aan <a href="mailto:hello@solit.legal" style="color:var(--accent);">hello@solit.legal</a>). Notificaties worden geacht te zijn ontvangen drie (3) werkdagen na de verzending ervan.</p>
       <p>Bedingen die inherent bedoeld zijn om te blijven bestaan na de beëindiging van deze Algemene Voorwaarden (waaronder Geheimhouding, Aansprakelijkheid, Toepasselijke wetgeving en bevoegde rechtbank, Niet-afwerving etc.) blijven geldig ook na de beëindiging van deze Algemene Voorwaarden.</p>
 
       <h2 style="font-family:var(--serif);font-size:1.5rem;font-weight:300;color:var(--ink);margin:2.5rem 0 1rem;">13. Publiciteit</h2>
@@ -1390,13 +1896,13 @@
       <h2 style="font-family:var(--serif);font-size:1.5rem;font-weight:300;color:var(--ink);margin:2.5rem 0 1rem;">14. Toepasselijke wetgeving en bevoegde rechtbank</h2>
       <p>Alle geschillen die voortkomen uit deze Algemene Voorwaarden, zijn onderworpen aan het Belgische recht. Bij elk geschil tussen SOLIT.LEGAL en een Klant zal steeds eerst getracht worden een minnelijke oplossing te bereiken. Indien naar best vermogen geen minnelijke regeling kan worden bereikt, zijn de rechtbanken van Antwerpen, afdeling Antwerpen bevoegd.</p>
 
-      <p style="font-size:0.82rem;color:var(--muted);border-top:1px solid var(--rule);padding-top:2rem;margin-top:3rem;">Vragen over deze Algemene Voorwaarden? Contacteer ons via <a href="/cdn-cgi/l/email-protection#7a121f1616153a091516130e54161f1d1b16" style="color:var(--accent);"><span class="__cf_email__" data-cfemail="4f272a2323200f3c2023263b61232a282e23">[email&#160;protected]</span></a>.</p>
+      <p style="font-size:0.82rem;color:var(--muted);border-top:1px solid var(--rule);padding-top:2rem;margin-top:3rem;">Vragen over deze Algemene Voorwaarden? Contacteer ons via <a href="mailto:hello@solit.legal" style="color:var(--accent);">hello@solit.legal</a>.</p>
     </div>
   </div>
 </div>
 
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+<script>
   // ── NAVIGATION ──
   function navigate(page) {
     document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
