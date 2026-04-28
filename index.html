@@ -237,15 +237,7 @@
     .article-link::after { content: '→'; }
 
     /* CTA banner */
-    .cta-banner { background: var(--ink); padding: 6rem 4rem; text-align: center; position: relative; overflow: hidden; }
-    .cta-banner::before { content: ''; position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); width: 600px; height: 600px; border-radius: 50%; border: 1px solid rgba(184,150,90,0.1); }
-    .cta-banner::after { content: ''; position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); width: 380px; height: 380px; border-radius: 50%; border: 1px solid rgba(184,150,90,0.07); }
-    .cta-banner-inner { position: relative; z-index: 1; }
-    .cta-eyebrow { font-size: 0.7rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); font-weight: 500; margin-bottom: 1.5rem; }
-    .cta-title { font-family: var(--serif); font-size: clamp(2.5rem, 5vw, 4.5rem); font-weight: 300; color: var(--paper); line-height: 1.1; margin-bottom: 2rem; }
-    .cta-title em { font-style: italic; color: var(--gold); }
-    .cta-sub { color: rgba(245,243,239,0.5); font-size: 1rem; margin-bottom: 3rem; max-width: 480px; margin-left: auto; margin-right: auto; }
-    .cta-actions { display: flex; gap: 1.25rem; justify-content: center; align-items: center; }
+
 
     /* ════════════════════════════════
        SERVICES PAGE
@@ -324,7 +316,7 @@
     .plan-card.featured .btn-primary:hover { background: #e8e5df; }
 
     /* Commission */
-    .commission-section { background: var(--ink); padding: 6rem 4rem 9rem; }
+    .commission-section { background: var(--accent); padding: 6rem 4rem 9rem; }
     .commission-inner { max-width: 1280px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 6rem; align-items: center; }
     .commission-inner .section-label { color: rgba(245,243,239,0.4); }
     .commission-inner .section-title { color: var(--paper); }
@@ -440,8 +432,7 @@
       .articles-grid { grid-template-columns: 1fr; }
       .clients-logos .client-logo { flex: 0 0 50%; }
       .footer-grid { grid-template-columns: 1fr 1fr; gap: 2rem; }
-      .cta-banner { padding: 4rem 1.5rem; }
-      .cta-title { font-size: clamp(1.75rem, 6vw, 3rem); }
+
       .page-header { padding: 7rem 1.5rem 3.5rem; }
       .page-header h1 { font-size: clamp(2rem, 7vw, 3.5rem); }
       footer { padding: 3rem 1.5rem 2rem; }
@@ -526,7 +517,6 @@
       .approach, .testimonials { padding: 3rem 1.25rem; }
       .services-page-content, .partners-section, .project-fees, .commission-section { padding: 3rem 1.25rem; }
       .nathan-section { padding: 3rem 1.25rem; }
-      .cta-banner { padding: 3.5rem 1.25rem; }
       .page-header { padding: 6.5rem 1.25rem 3rem; }
       footer { padding: 2.5rem 1.25rem 1.5rem; }
       .footer-grid { grid-template-columns: 1fr; gap: 2rem; }
@@ -779,17 +769,7 @@
     </div>
   </section>
 
-  <section class="cta-banner">
-    <div class="cta-banner-inner">
-      <div class="cta-eyebrow">Get in touch</div>
-      <h2 class="cta-title">Let's have a <em>conversation</em></h2>
-      <p class="cta-sub">Curious how we can help? We're happy to explore what a collaboration could look like.</p>
-      <div class="cta-actions">
-        <button class="btn-gold" onclick="navigate('contact')">Reach out</button>
-        <button class="btn-outline" onclick="navigate('services')">Explore services</button>
-      </div>
-    </div>
-  </section>
+
 
 </div><!-- /home -->
 
@@ -1005,17 +985,7 @@
     </div>
   </section>
 
-  <section class="cta-banner">
-    <div class="cta-banner-inner">
-      <div class="cta-eyebrow">Get started</div>
-      <h2 class="cta-title">Ready to discuss<br>your <em>legal needs?</em></h2>
-      <p class="cta-sub">Let us know what challenges you're facing and we'll put together a tailored approach.</p>
-      <div class="cta-actions">
-        <button class="btn-gold" onclick="navigate('contact')">Contact us</button>
-        <button class="btn-outline" onclick="navigate('pricing')">View pricing</button>
-      </div>
-    </div>
-  </section>
+
 </div><!-- /services -->
 
 <!-- ═══════════════════════════════════ PRICING ═══════════════════════════════════ -->
@@ -1146,16 +1116,7 @@
     </div>
   </section>
 
-  <section class="cta-banner">
-    <div class="cta-banner-inner">
-      <div class="cta-eyebrow">Get in touch</div>
-      <h2 class="cta-title">Not sure which<br><em>formula fits you?</em></h2>
-      <p class="cta-sub">Every organisation is different. Reach out and we'll help you find the right approach for your situation.</p>
-      <div class="cta-actions">
-        <button class="btn-gold" onclick="navigate('contact')">Contact us</button>
-      </div>
-    </div>
-  </section>
+
 </div><!-- /pricing -->
 
 <!-- ═══════════════════════════════════ ABOUT ═══════════════════════════════════ -->
@@ -1211,7 +1172,7 @@
             <li style="padding:1rem 0;border-bottom:1px solid rgba(245,243,239,0.08);display:flex;justify-content:space-between;align-items:start;gap:1.5rem;">
               <div>
                 <div style="font-family:var(--serif);font-size:1.05rem;color:var(--paper);line-height:1.35;margin-bottom:0.35rem;">Acquisition of Connective by Nitro Software</div>
-                <div style="font-size:0.82rem;color:rgba(245,243,239,0.5);line-height:1.55;">Legal lead on the acquisition of Belgian e-signing specialist Connective by US-listed Nitro Software (2021).</div>
+                <div style="font-size:0.82rem;color:rgba(245,243,239,0.5);line-height:1.55;">Legal lead on the acquisition of Belgian e-signing specialist Connective by ASX-listed Nitro Software (2021).</div>
               </div>
               <div style="display:flex;gap:1rem;flex-shrink:0;padding-top:0.2rem;">
                 <a href="https://www.tijd.be/ondernemen/ict/antwerpse-e-signingspecialist-connective-verkocht-aan-amerikaanse-nitro/10345515.html" target="_blank" rel="noopener" style="font-size:0.65rem;letter-spacing:0.08em;text-transform:uppercase;color:var(--gold);text-decoration:none;font-weight:500;white-space:nowrap;">De Tijd ↗</a>
@@ -1292,14 +1253,6 @@
   </div>
 
   <!-- Intro band -->
-  <div class="tagline-band">
-    <div class="tagline-band-inner">
-      <span class="tagline-band-rule"></span>
-      <span class="tagline-band-text">Legal advice should <em>enable</em> your business, not slow it down</span>
-      <span class="tagline-band-rule"></span>
-    </div>
-  </div>
-
   <!-- Pillar 1: Legal Tech & AI -->
   <section style="padding:7rem 4rem;max-width:1280px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:6rem;align-items:center;">
     <div class="reveal">
@@ -1369,17 +1322,7 @@
     </div>
   </section>
 
-  <section class="cta-banner">
-    <div class="cta-banner-inner">
-      <div class="cta-eyebrow">Experience the difference</div>
-      <h2 class="cta-title">Ready to work with<br><em>a different kind of legal partner?</em></h2>
-      <p class="cta-sub">Let's discuss how our approach can support your technology company.</p>
-      <div class="cta-actions">
-        <button class="btn-gold" onclick="navigate('contact')">Contact us</button>
-        <button class="btn-outline" onclick="navigate('services')">Explore services</button>
-      </div>
-    </div>
-  </section>
+
 
 </div><!-- /difference -->
 
@@ -1423,7 +1366,7 @@
         </div>
       </a>
 
-      <a href="https://www.linkedin.com/company/solit-legal" target="_blank" rel="noopener" style="background:var(--paper);padding:3rem 2.5rem;text-decoration:none;display:flex;flex-direction:column;gap:1.25rem;transition:background 0.3s;">
+      <a href="https://be.linkedin.com/company/solitlegal" target="_blank" rel="noopener" style="background:var(--paper);padding:3rem 2.5rem;text-decoration:none;display:flex;flex-direction:column;gap:1.25rem;transition:background 0.3s;">
         <div style="width:2.75rem;height:2.75rem;background:var(--accent);display:flex;align-items:center;justify-content:center;border-radius:2px;color:var(--paper);">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
         </div>
@@ -1490,7 +1433,7 @@
       <ul class="footer-links">
         <li><a href="mailto:hello@solit.legal">hello@solit.legal</a></li>
         <li><a href="tel:+32498489623">+32 498 48 96 23</a></li>
-        <li><a href="https://www.linkedin.com/company/solit-legal" target="_blank">LinkedIn</a></li>
+        <li><a href="https://be.linkedin.com/company/solitlegal" target="_blank">LinkedIn</a></li>
       </ul>
     </div>
   </div>
@@ -1516,7 +1459,7 @@
 
     <div style="background:var(--paper);border:1px solid var(--rule);padding:2rem 2.5rem;margin-bottom:3rem;">
       <div style="font-size:0.7rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--gold);margin-bottom:0.75rem;">Data Controller</div>
-      <p style="font-size:0.9rem;color:var(--muted);line-height:1.7;margin:0;">SOLIT.LEGAL NV &middot; BE 0735.409.755 &middot; Ten Hoflaan 26, 2980 Zoersel (Belgium) RPR Antwerp &middot; <a href="mailto:hello@solit.legal" style="color:var(--accent);">hello@solit.legal</a></p>
+      <p style="font-size:0.9rem;color:var(--muted);line-height:1.7;margin:0;">SOLIT.LEGAL BV &middot; BE 0735.409.755 &middot; Ten Hoflaan 26, 2980 Zoersel (Belgium) RPR Antwerp &middot; <a href="mailto:hello@solit.legal" style="color:var(--accent);">hello@solit.legal</a></p>
     </div>
 
     <div style="font-size:0.95rem;color:var(--muted);line-height:1.8;">
@@ -1559,7 +1502,7 @@
       <h2 style="font-family:var(--serif);font-size:1.5rem;font-weight:300;color:var(--ink);margin:2.5rem 0 1rem;"><span style="color:var(--gold);margin-right:0.5rem;">2.</span> Who is SOLIT.LEGAL?</h2>
       <p>SOLIT.LEGAL is a Belgian based legal consultancy and advisory firm, specializing in IT law, data protection and privacy, artificial intelligence and management consulting.</p>
       <div style="background:var(--paper);border:1px solid var(--rule);padding:1.5rem 2rem;margin-top:1.5rem;">
-        <p style="margin:0;"><strong style="color:var(--ink);">SOLIT.LEGAL NV</strong></p>
+        <p style="margin:0;"><strong style="color:var(--ink);">SOLIT.LEGAL BV</strong></p>
         <p style="margin:0.25rem 0 0;">BE 0735.409.755</p>
         <p style="margin:0.25rem 0 0;">Ten Hoflaan 26</p>
         <p style="margin:0.25rem 0 0;">2980 Zoersel (Belgium) RPR Antwerp</p>
@@ -1763,7 +1706,7 @@
       <h2 style="font-family:var(--serif);font-size:1.5rem;font-weight:300;color:var(--ink);margin:2.5rem 0 1rem;"><span style="color:var(--gold);margin-right:0.5rem;">12.</span> How can you contact us?</h2>
       <p style="margin-bottom:1.5rem;">We are here to assist you with any questions you may have regarding this privacy policy or the processing of your personal data. Please do not hesitate to get in touch with us:</p>
       <div style="background:var(--paper);border:1px solid var(--rule);padding:1.5rem 2rem;">
-        <p style="margin:0;"><strong style="color:var(--ink);">SOLIT.LEGAL NV</strong></p>
+        <p style="margin:0;"><strong style="color:var(--ink);">SOLIT.LEGAL BV</strong></p>
         <p style="margin:0.25rem 0 0;">BE0735.409.755</p>
         <p style="margin:0.25rem 0 0;">Ten Hoflaan 26</p>
         <p style="margin:0.25rem 0 0;">2980 Zoersel (Belgium) RPR Antwerp</p>
